@@ -13,7 +13,9 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     np,
-    openxlsx
+    openxlsx,
+    graphics,
+    stats
 RoxygenNote: 5.0.1
 URL: http://github.com/maiers94/rpatrec
 BugReports: http://github.com/maiers94/rpatrec/issues
