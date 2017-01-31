@@ -15,6 +15,6 @@ Imports:
     np,
     openxlsx
 RoxygenNote: 5.0.1
-URL: http://github.com/hadley/dplyr
-BugReports: http://github.com/hadley/dplyr/issues
+URL: http://github.com/maiers94/rpatrec
+BugReports: http://github.com/maiers94/rpatrec/issues
 
