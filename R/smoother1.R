@@ -14,11 +14,6 @@
 #'
 
 
-
-
-
-
-
 mav <- function(input,len,method){
   #########
   sim <- function(inp,l){
