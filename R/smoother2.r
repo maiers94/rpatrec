@@ -1,4 +1,5 @@
 #library(np)
+#'@importFrom stats fitted
 
 kernel <- function(input, bandwidth="auto"){
   x <- seq(1,length(input))

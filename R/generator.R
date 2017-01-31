@@ -1,7 +1,7 @@
 generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(0,15,25,50,75,85,100), sprd = c(0,50,25,100,25,50,0)){
   #generate any pattern
-  
-  
+
+
   start.const <- start
   neg <- start - tot.spread
   negative <- FALSE
@@ -10,20 +10,20 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
     negative <- TRUE
   }
   start.const <- start
-  
+
   #make data
   output <- vector(length = dlength)
-  
-  partitions <- as.integer(round(parts/100*dlength)) 
+
+  partitions <- as.integer(round(parts/100*dlength))
   pre_spreads <- sprd/100         ##same
   for(i in 1:(plength+1)){
     reference <- start.const + round(tot.spread*pre_spreads[i+1])
-      
+
     curspread <- 2*tot.spread*abs(pre_spreads[i+1]-pre_spreads[i])/(partitions[i+1]-partitions[i])
     #print(curspread)
     output[(partitions[i]+1):partitions[i+1]] <- sectgen((partitions[i+1]-partitions[i]),start,reference,curspread)
     start <- output[(partitions[i+1]-1)]
-    
+
   }
   if(negative==TRUE)output <- output + neg -10
   if(presig != 0){
@@ -38,6 +38,8 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
   }
   return(output)
 }
+
+#'@importFrom stats runif
 
 sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
   sector <- vector(length = sectlen)
@@ -59,9 +61,11 @@ sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
     }
   }
 
-  
+
   return(sector)
 }
+
+#'@importFrom stats rnorm
 
 noise <- function(input,type,level){
   if(is.numeric(level))final_level <- level
@@ -81,6 +85,6 @@ noise <- function(input,type,level){
     noise <- cumsum(rnorm(length(input),0,final_level))
     output <- input + noise
   }
-  
+
   return(output)
 }

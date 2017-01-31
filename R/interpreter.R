@@ -1,3 +1,5 @@
+#'@importFrom graphics plot
+
 slicer <- function(data,length,step=1){
   no.windows <- (length(data)-length)/step+1
   output <- vector(length=no.windows)
@@ -7,20 +9,20 @@ slicer <- function(data,length,step=1){
     window <- data[lower:upper]
     output[i] <- interpret(window)
     if(output[i]!=0)plot(window)
-    
+
   }
   return(output)
 }
 
 
 interpret <- function(window){
-  
+
   init.trend <- function(data){
     if(data[1]>data[2])t<-"down"
     if(data[1]<=data[2])t<-"up"
     return(t)
   }
-  
+
   ########
   bors <- function(a,b){
     if(a==b) big <- 0 #####
@@ -54,17 +56,17 @@ interpret <- function(window){
     else return(FALSE)
   }
   #########
-  
+
   extrema <- vector()
   exvals <- vector()
   setcheck <- FALSE
   trend<-init.trend(window)
-  
+
   for(i in 3:length(window)){
     #print(window[i-1])
     x <- bors(window[i-2],window[i-1])
     y <- bors(window[i-1],window[i])
-    
+
     if(x != y){
       if(trend == "up" && y == -1){
         extrema <- c(extrema,1)

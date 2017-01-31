@@ -23,6 +23,5 @@ Compute the moving average, exponential average or running median.
 \examples{
 mav(1:10,5,"exponential")
 
-
 }
 

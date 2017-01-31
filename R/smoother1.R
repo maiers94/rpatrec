@@ -11,6 +11,8 @@
 #'@examples
 #'mav(1:10,5,"exponential")
 #'
+#'@export
+#'@importFrom stats median
 #'
 
 
