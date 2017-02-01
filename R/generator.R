@@ -1,3 +1,27 @@
+#'Generate a time series containing a Visual Charting Pattern.
+#'
+#'@param start Starting value
+#'@param dlength Integer. Length of the signal part of the time series
+#'@param tot.spread Integer. Difference between the lowest and highest value of the time series
+#'@param presig Integer. Length of the pre-signal part of the time series
+#'@param postsig Integer. Length of the post-signal part of the time series
+#'@param plength Integer. Number of extrema in the pattern
+#'@param parts Vector of Integers. Vector must contain plength + 2 elements, the first element being 0 and the last 100.
+#'    defines how far the extrema lie apart from another (in percent)
+#'@param sprd Vector of Integers.Vector must contain plength + 2 elements, the first and last elemnt should be 0.
+#'    Defines the value of the extrema in percent of \code{tot.spread} in relation to \code{start}
+#'
+#'@return Time series with (optional) pre- or post signal, and the specified pattern.
+#'
+#'@examples
+#'#create a standard HS pattern:
+#'generator()
+#'#create a shifted head and shoulders pattern
+#'generator(sprd = c(0,20,10,90,40,60,0))
+#'
+#'@export
+#'
+#'
 generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(0,15,25,50,75,85,100), sprd = c(0,50,25,100,25,50,0)){
   #generate any pattern
 
