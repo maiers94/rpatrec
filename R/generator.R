@@ -89,7 +89,23 @@ sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
   return(sector)
 }
 
+#'
+#'Add noise to a time series
+#'
+#'@param input Time series to which noise will be added
+#'@param type String. Defines what type of noise to be added. Acceptable values are:
+#'    \code{white} - white noise with variance \code{level}
+#'    \code{red} - red noise with variance \code{level} (use with caution)
+#'@param level Number or \code{var}.
+#'    A number sets the standard deviation to a constant value at each point.
+#'    \code{var} sets the variance to increase proportional to the (absolute value of the) signal at peaks.
+#'
+#'
+#'@return Time series with added noise.
+#'
+#'@export
 #'@importFrom stats rnorm
+#'
 
 noise <- function(input,type,level){
   if(is.numeric(level))final_level <- level
