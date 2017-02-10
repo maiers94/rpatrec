@@ -98,7 +98,7 @@ sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
 #'    \code{red} - red noise with variance \code{level} (use with caution)
 #'@param level Number or \code{var}.
 #'    A number sets the standard deviation to a constant value at each point.
-#'    \code{var} sets the variance to increase proportional to the (absolute value of the) signal at peaks.
+#'    \code{var} sets the standard deviation to increase proportional to the (absolute value of the) signal at peaks.
 #'
 #'
 #'@return Time series with added noise.
