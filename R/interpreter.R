@@ -58,13 +58,13 @@ interpret <- function(window,useriq=FALSE){
     pattern <- 0
 
     #############
-    ##### - check for Head and shoulder and inverse head and shoulders
+    #- check for Head and shoulder and inverse head and shoulders
     iqhs <- function(ext,exvals){
       #pattern length needs to be 5 (or more if other data follows)
       if(length(ext)<5)return(0)
       for(i in 5:length(ext)){
         #2nd & 4th extremum must be within 10% average
-        if(withinavg(exvals[i-3],exvals[i-1],p=0.1) == TRUE){
+        if(withinavg(c(exvals[i-3],exvals[i-1]),p=0.1) == TRUE){
           #if the first extremum is a maximum, it is a Head and shoulders pattern
           if(ext[i-4]==1){
             if(exvals[i-2]>exvals[i-4]&&exvals[i-2]>exvals[i])return(c("HS",exvals[(i-4):i]))
@@ -78,21 +78,77 @@ interpret <- function(window,useriq=FALSE){
       return(0)
     }
     ##############
+    #- check for Broadening tops and bottoms and triangle tops and bottoms
+    iqbtp <- function(ext,exvals){
+      #pattern length needs to be 5 (or more if other data follows)
+      if(length(ext)<5)return(0)
+      for(i in 5:length(ext)){
+        #if 2nd is bigger than 4th
+        if(exvals[i-3]>exvals[i-1]){
+          #if 1st is smaller than 3rd and 3rd is smaller than 5th
+          if(exvals[i-4]<exvals[i-2]){
+            if(exvals[i-2]<exvals[i]){
+              #if first is max
+              if(ext[i-4]==1)return(c("BTOP",exvals[(i-4):i]))
+              #if first is min
+              if(ext[i-4]==0)return(c("TBOT",exvals[(i-4):i]))
+            }
+          }
+        }
+        #if 2nd is smaller than 4th
+        if(exvals[i-3]<exvals[i-1]){
+          #if 1st is larger than 3rd and 3rd is larger than 5th
+          if(exvals[i-4]>exvals[i-2]){
+            if(exvals[i-2]>exvals[i]){
+              #if first is min
+              if(ext[i-4]==0)return(c("BBOT",exvals[(i-4):i]))
+              #if first is max
+              if(ext[i-4]==1)return(c("TTOP",exvals[(i-4):i]))
+            }
+          }
+        }
+      }
+      return(0)
+    }
+    ##############
+    #- check for rectangle tops and bottoms
+    iqrtp <- function(ext,exvals){
+      #pattern length needs to be 5 (or more if other data follows)
+      if(length(ext)<5)return(0)
+      #tops are within 1% of their average
+      if(withinavg(exvals[ext==1],0.01)){
+        if(withinavg(exvals[ext==0],0.01)){
+          if(min(exvals[ext==1])>max(exvals[ext==0])){
+            if(ext[i-4]==0)return(c("RBOT",exvals[(i-4):i]))
+            if(ext[i-4]==1)return(c("RTOP",exvals[(i-4):i]))
+          }
+        }
+      }
+      return(0)
+    }
 
+    ##############
 
-
-    #pattern length needs to be 5 (or more if other data follows)
-    return(iqhs(ext,exvals))
+    pattern <- iqhs(ext,exvals)
+    pattern <- iqbtp(ext,exvals)
     return(0)
   }
 
   #########
-  withinavg <- function(a,b,p){
+  withinavg.old <- function(a,b,p){
     a <- abs(a)
     b <- abs(b)
     c <- (a+b)/2
     if(a>(1-p)*c && a<(1+p)*c && b>(1-p)*c && b<(1+p)*c)return(TRUE)
     else return(FALSE)
+  }
+
+  withinavg <- function(x,p){
+    c <- sum(x)/length(x)
+    for(i in 1:length(x)){
+      if(x[i]<(1-p)*c || x[i]>(1+p)*c)return(FALSE)
+    }
+    return(TRUE)
   }
   #########
 
