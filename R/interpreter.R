@@ -1,21 +1,42 @@
+#'Break time series data into smaller "windows" and pass them to the interpret() function
+#'
+#'@param data Time series Data
+#'@param length Length of the "windows"
+#'@param step Number of Data Points between windows
+#'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
+#'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
+#'    it should return the desired result.
+#'
+#'
 #'@importFrom graphics plot
+#'
+#'
+#'
+#'
 
-slicer <- function(data,length,step=1){
+slicer <- function(data,length,step=1,useriq=FALSE){
   no.windows <- (length(data)-length)/step+1
   output <- vector(length=no.windows)
   for(i in 1:no.windows){
     lower <- (i-1)*(step)+1
     upper <- lower + length-1
     window <- data[lower:upper]
-    output[i] <- interpret(window)
+    output[i] <- interpret(window,useriq)
     if(output[i]!=0)plot(window)
 
   }
   return(output)
 }
 
+#'Recognise patterns in Time Series Data
+#'
+#'@param window Time Series Data
+#'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
+#'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
+#'    it should return the desired result.
+#'
 
-interpret <- function(window){
+interpret <- function(window,useriq=FALSE){
 
   init.trend <- function(data){
     if(data[1]>data[2])t<-"down"
@@ -31,24 +52,42 @@ interpret <- function(window){
     return(big)
   }
   ########
-  iq <- function(ext){
+  #pattern recognition happens here, everything else is preparation
+
+  iq <- function(ext,exvals){
     pattern <- 0
-    if(length(ext)<5)return(0)
-    for(i in 5:length(ext)){
-      if(withinavg(exvals[i-3],exvals[i-1]) == TRUE){
-        if(ext[i-4]==1){
-          if(exvals[i-2]>exvals[i-4]&&exvals[i-2]>exvals[i])return(c("HS",exvals[(i-4):i]))
-        }
-        if(ext[i-4]==0){
-          print(ext[i-4])
-          if(exvals[i-2]<exvals[i-4]&&exvals[i-2]<exvals[i])return(c("Inv HS",exvals[(i-4):i]))
+
+    #############
+    ##### - check for Head and shoulder and inverse head and shoulders
+    iqhs <- function(ext,exvals){
+      #pattern length needs to be 5 (or more if other data follows)
+      if(length(ext)<5)return(0)
+      for(i in 5:length(ext)){
+        #2nd & 4th extremum must be within 10% average
+        if(withinavg(exvals[i-3],exvals[i-1],p=0.1) == TRUE){
+          #if the first extremum is a maximum, it is a Head and shoulders pattern
+          if(ext[i-4]==1){
+            if(exvals[i-2]>exvals[i-4]&&exvals[i-2]>exvals[i])return(c("HS",exvals[(i-4):i]))
+          }
+          if(ext[i-4]==0){
+            #if the first extremum is a minium, it is an inverse Head and shoulders pattern
+            if(exvals[i-2]<exvals[i-4]&&exvals[i-2]<exvals[i])return(c("Inv HS",exvals[(i-4):i]))
+          }
         }
       }
+      return(0)
     }
+    ##############
+
+
+
+    #pattern length needs to be 5 (or more if other data follows)
+    return(iqhs(ext,exvals))
     return(0)
   }
+
   #########
-  withinavg <- function(a,b,p=0.1){
+  withinavg <- function(a,b,p){
     a <- abs(a)
     b <- abs(b)
     c <- (a+b)/2
@@ -80,7 +119,10 @@ interpret <- function(window){
       }
     }
   }
-  result <- iq(extrema)
+  if(is.function(useriq)){
+    result <- useriq(extrema,exvals)
+  }
+  else result <- iq(extrema,exvals)
   print(extrema)
   return(result)
 }
