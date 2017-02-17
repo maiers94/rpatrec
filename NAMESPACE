@@ -3,6 +3,7 @@
 export(generator)
 export(mav)
 export(noise)
+export(savgolay)
 importFrom(graphics,plot)
 importFrom(stats,fitted)
 importFrom(stats,median)

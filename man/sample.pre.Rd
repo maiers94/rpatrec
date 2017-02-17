@@ -6,6 +6,9 @@
 \usage{
 sample.pre(input)
 }
+\arguments{
+\item{input}{Vector with timeseries data}
+}
 \description{
 Prepare Data for using with the other functions by removing non-numeric elements, and removing repeated values
 }

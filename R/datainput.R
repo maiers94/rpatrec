@@ -9,6 +9,8 @@
 # nikkei <-data[[5]]
 
 #'Prepare Data for using with the other functions by removing non-numeric elements, and removing repeated values
+#'
+#'@param input Vector with timeseries data
 
 sample.pre <- function(input){
   i <- 1
