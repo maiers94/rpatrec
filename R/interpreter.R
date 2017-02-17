@@ -54,7 +54,7 @@ interpret <- function(window,useriq=FALSE){
   ########
   #pattern recognition happens here, everything else is preparation
 
-  iq <- function(ext,exvals){
+  iq <- function(ext,exvals,expos){
     pattern <- 0
 
     #############
@@ -115,12 +115,38 @@ interpret <- function(window,useriq=FALSE){
     iqrtp <- function(ext,exvals){
       #pattern length needs to be 5 (or more if other data follows)
       if(length(ext)<5)return(0)
-      #tops are within 1% of their average
-      if(withinavg(exvals[ext==1],0.01)){
-        if(withinavg(exvals[ext==0],0.01)){
-          if(min(exvals[ext==1])>max(exvals[ext==0])){
-            if(ext[i-4]==0)return(c("RBOT",exvals[(i-4):i]))
-            if(ext[i-4]==1)return(c("RTOP",exvals[(i-4):i]))
+      for(i in 5:length(ext)){
+        #tops are within 1% of their average
+        if(withinavg(exvals[ext==1],0.01)){
+          if(withinavg(exvals[ext==0],0.01)){
+            if(min(exvals[ext==1])>max(exvals[ext==0])){
+              if(ext[i-4]==0)return(c("RBOT",exvals[(i-4):i]))
+              if(ext[i-4]==1)return(c("RTOP",exvals[(i-4):i]))
+            }
+          }
+        }
+      }
+      return(0)
+    }
+
+    ##############
+    #- check for double tops/bottoms
+    iqdtp <- funtion(ext,exvals,expos){
+      #pattern length needs to be 5 (or more if other data follows)
+      if(length(ext)<3)return(0)
+
+      for(i in 3:length(ext)){
+        rext <- ext[(i-2):length(ext)]
+        rexvals <- exvals[(i-1):length(exvals)]
+        if(ext[i-2]==1){
+          if(withinavg(c(ext[i-2],max(rexvals[rext==1])),0.05)){
+            #at least 22 trading days apart
+            if(expos[which.max(rexvals[rext==1])]-expos[i-2]>22)
+          }
+        }
+        if(ext[i-2]==0){
+          if(withinavg(c(ext[i-2],min(rexvals[rext==0])),0.05)){
+            #at least 22 trading days apart
           }
         }
       }
@@ -131,7 +157,9 @@ interpret <- function(window,useriq=FALSE){
 
     pattern <- iqhs(ext,exvals)
     pattern <- iqbtp(ext,exvals)
-    return(0)
+    pattern <- iqrtp(ext,exvals)
+
+    return(pattern)
   }
 
   #########
@@ -154,6 +182,7 @@ interpret <- function(window,useriq=FALSE){
 
   extrema <- vector()
   exvals <- vector()
+  expos <- vector()
   setcheck <- FALSE
   trend<-init.trend(window)
 
@@ -167,18 +196,20 @@ interpret <- function(window,useriq=FALSE){
         extrema <- c(extrema,1)
         trend <- "down"
         exvals <- c(exvals,window[i-1])
+        expos <- c(expos,(i-1))
       }
       if(trend == "down" && y == 1){
         extrema <- c(extrema,0)
         trend <- "up"
         exvals <- c(exvals,window[i-1])
+        expos <- c(expos,(i-1))
       }
     }
   }
   if(is.function(useriq)){
-    result <- useriq(extrema,exvals)
+    result <- useriq(extrema,exvals,expos)
   }
-  else result <- iq(extrema,exvals)
+  else result <- iq(extrema,exvals,expos)
   print(extrema)
   return(result)
 }
