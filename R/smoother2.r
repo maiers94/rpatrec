@@ -1,4 +1,12 @@
 #library(np)
+
+#'Perform Kernel Regression on Time Series Data
+#'
+#'@param input Vector of Time Series Data
+#'@param bandwith -Numerical: Choice of Bandwith
+#'    -\code{auto}: Choose bandwith by Cross validation automatically for the given sample
+#'
+#'
 #'@importFrom stats fitted
 
 kernel <- function(input, bandwidth="auto"){
