@@ -128,10 +128,9 @@ interpret <- function(window,useriq=FALSE){
       }
       return(0)
     }
-
     ##############
     #- check for double tops/bottoms
-    iqdtp <- funtion(ext,exvals,expos){
+    iqdtp <- function(ext,exvals,expos){
       #pattern length needs to be 5 (or more if other data follows)
       if(length(ext)<3)return(0)
 
@@ -141,7 +140,7 @@ interpret <- function(window,useriq=FALSE){
         if(ext[i-2]==1){
           if(withinavg(c(ext[i-2],max(rexvals[rext==1])),0.05)){
             #at least 22 trading days apart
-            if(expos[which.max(rexvals[rext==1])]-expos[i-2]>22)
+            #if(expos[which.max(rexvals[rext==1])]-expos[i-2]>22)
           }
         }
         if(ext[i-2]==0){
@@ -152,7 +151,6 @@ interpret <- function(window,useriq=FALSE){
       }
       return(0)
     }
-
     ##############
 
     pattern <- iqhs(ext,exvals)
