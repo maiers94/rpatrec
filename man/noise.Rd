@@ -15,7 +15,7 @@ noise(input, type, level)
 
 \item{level}{Number or \code{var}.
 A number sets the standard deviation to a constant value at each point.
-\code{var} sets the variance to increase proportional to the (absolute value of the) signal at peaks.}
+\code{var} sets the standard deviation to increase proportional to the (absolute value of the) signal at peaks.}
 }
 \value{
 Time series with added noise.
