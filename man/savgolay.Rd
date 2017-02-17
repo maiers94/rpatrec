@@ -13,6 +13,9 @@ savgolay(data, width = 4, degree = 2)
 
 \item{degree}{Highest degree polynomial}
 }
+\value{
+Vector containing smoothed time series data.
+}
 \description{
 Perform Savitzgy-Golay smoothing on Time Series Data
 }

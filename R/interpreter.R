@@ -9,7 +9,7 @@
 #'
 #'
 #'@importFrom graphics plot
-#'
+#'@export
 #'
 #'
 #'
@@ -34,6 +34,10 @@ slicer <- function(data,length,step=1,useriq=FALSE){
 #'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
 #'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
 #'    it should return the desired result.
+#'
+#'
+#'
+#'@export
 #'
 
 interpret <- function(window,useriq=FALSE){

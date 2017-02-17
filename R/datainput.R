@@ -8,9 +8,11 @@
 # dow <- data[[4]]
 # nikkei <-data[[5]]
 
-#'Prepare Data for using with the other functions by removing non-numeric elements, and removing repeated values
+#'Prepare Data for using with the other functions
 #'
 #'@param input Vector with timeseries data
+#'
+#'@return Returns a vector conataining time series data ready forfurther use by removing non-numeric elements, and removing repeated values.
 
 sample.pre <- function(input){
   i <- 1

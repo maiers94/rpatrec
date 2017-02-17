@@ -6,6 +6,8 @@
 #'@param bandwith -Numerical: Choice of Bandwith
 #'    -\code{auto}: Choose bandwith by Cross validation automatically for the given sample
 #'
+#'@return Vector containing smoothed time series data, prints the bandwidth used.
+#'
 #'
 #'@importFrom stats fitted
 

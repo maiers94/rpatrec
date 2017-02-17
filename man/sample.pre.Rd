@@ -2,14 +2,17 @@
 % Please edit documentation in R/datainput.R
 \name{sample.pre}
 \alias{sample.pre}
-\title{Prepare Data for using with the other functions by removing non-numeric elements, and removing repeated values}
+\title{Prepare Data for using with the other functions}
 \usage{
 sample.pre(input)
 }
 \arguments{
 \item{input}{Vector with timeseries data}
 }
+\value{
+Returns a vector conataining time series data ready forfurther use by removing non-numeric elements, and removing repeated values.
+}
 \description{
-Prepare Data for using with the other functions by removing non-numeric elements, and removing repeated values
+Prepare Data for using with the other functions
 }
 

@@ -12,6 +12,9 @@ kernel(input, bandwidth = "auto")
 \item{bandwith}{-Numerical: Choice of Bandwith
 -\code{auto}: Choose bandwith by Cross validation automatically for the given sample}
 }
+\value{
+Vector containing smoothed time series data, prints the bandwidth used.
+}
 \description{
 Perform Kernel Regression on Time Series Data
 }

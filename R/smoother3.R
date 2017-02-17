@@ -4,6 +4,8 @@
 #'@param width Width of the filter (to each side of the centre)
 #'@param degree Highest degree polynomial
 #'
+#'@return Vector containing smoothed time series data.
+#'
 #'@export
 
 savgolay <- function(data,width=4,degree=2){
