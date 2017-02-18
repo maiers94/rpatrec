@@ -43,6 +43,25 @@ inputchecks <- function(arg,who){
     singlenumber(arg[[2]],pos=TRUE,int=TRUE)
     correctstring(arg[[3]],specific=c("simple","median","exponential"))
   }
+  if(who=="kernel"){
+    vectornumber(arg[[1]])
+    #arg[[2]] checked in function due to complexity
+  }
+  if(who=="savgolay"){
+    vectornumber(arg[[1]])
+    singlenumber(arg[[2]],pos=TRUE,int=TRUE)
+    singlenumber(arg[[3]],pos=TRUE,int=TRUE)
+  }
+  if(who=="slicer"){
+    vectornumber(arg[[1]])
+    singlenumber(arg[[2]],pos=TRUE,int=TRUE)
+    singlenumber(arg[[3]],pos=TRUE,int=TRUE)
+    functioncheck(arg[[4]])
+  }
+  if(who=="interpret"){
+    vectornumber(arg[[1]])
+    functioncheck(arg[[2]])
+  }
 
   return(0)
 }
@@ -64,6 +83,7 @@ singlenumber <- function(x,int=FALSE,pos=FALSE,nneg=FALSE,specific=FALSE){
   }
   return(0)
 }
+
 vectornumber <- function(x,l=FALSE){
   if(l!=FALSE){
     if(length(x)!=l)stop("invalid arguments - not of correct length")
@@ -86,6 +106,15 @@ correctstring <- function(x,specific=FALSE){
       if(check==0)stop("invalid arguments")
     }
   }
+  return(0)
+}
+
+functioncheck <- function(x){
+  if(x!=FALSE){
+    if(!is.function(x))stop("invalid arguments")
+    else if(length(formals(x))!=3)stop("invalid arguments - user defined function incorrect")
+  }
+
   return(0)
 }
 

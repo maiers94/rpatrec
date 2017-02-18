@@ -12,10 +12,13 @@
 #'@importFrom stats fitted
 
 kernel <- function(input, bandwidth="auto"){
+  inputchecks(list(input,bandwidth),"kernel")
+
   x <- seq(1,length(input))
 
   if(is.numeric(bandwidth))reg <- np::npreg(input ~ x, ckertype = "gaussian", bws = bandwidth, regtype="lc")
-  if(bandwidth=="auto")reg <- np::npreg(input ~ x, ckertype = "gaussian", bwmethod="cv.ls", regtype="lc")
+  else if(bandwidth=="auto")reg <- np::npreg(input ~ x, ckertype = "gaussian", bwmethod="cv.ls", regtype="lc")
+  else stop("invalid bandwidth input")
 
   output <- fitted(reg)
   print(reg[[1]])

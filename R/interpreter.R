@@ -5,7 +5,7 @@
 #'@param step Number of Data Points between windows
 #'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
 #'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-#'    it should return the desired result.
+#'    It should return the desired result.
 #'
 #'
 #'@importFrom graphics plot
@@ -15,6 +15,9 @@
 #'
 
 slicer <- function(data,length,step=1,useriq=FALSE){
+
+  inputchecks(list(data,length,step,useriq),"slicer")
+
   no.windows <- (length(data)-length)/step+1
   output <- vector(length=no.windows)
   for(i in 1:no.windows){
@@ -41,6 +44,8 @@ slicer <- function(data,length,step=1,useriq=FALSE){
 #'
 
 interpret <- function(window,useriq=FALSE){
+
+  inputchecks(list(window,useriq),"interpret")
 
   init.trend <- function(data){
     if(data[1]>data[2])t<-"down"

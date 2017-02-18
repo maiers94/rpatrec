@@ -10,6 +10,8 @@
 
 savgolay <- function(data,width=4,degree=2){
 
+  inputchecks(list(data,width,degree),"savgolay")
+
   #perform the actual sg smoothing
   sg.filter <- function(input,N){
     #N <= 2M
