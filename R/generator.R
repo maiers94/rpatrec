@@ -29,14 +29,14 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
   #generate any pattern
 
 
-  sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
+  sectgen <- function(sectlen,init,ref,spread,acc = 0.00001){
     sector <- vector(length = sectlen)
-    expected <- ref
     #print(ref)
     #print(init)
 
-    expmin <- expected * (1-acc)
-    expmax <- expected * (1+acc)
+    expmin <- ref * (1-acc)
+    expmax <- ref * (1+acc)
+    print(expmin)
     repeat{
       cur <- init
       for(j in 1:sectlen){
