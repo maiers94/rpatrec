@@ -106,7 +106,7 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
 #'@param type String. Defines what type of noise to be added. Acceptable values are:
 #'    \code{white} - white noise with variance \code{level}
 #'    \code{red} - red noise with variance \code{level} (use with caution)
-#'@param level Number or \code{var}.
+#'@param final_level Number or \code{var}.
 #'    A number sets the standard deviation to a constant value at each point.
 #'    \code{var} sets the standard deviation to increase proportional to the (absolute value of the) signal at peaks.
 #'

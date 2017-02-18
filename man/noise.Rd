@@ -4,7 +4,7 @@
 \alias{noise}
 \title{Add noise to a time series}
 \usage{
-noise(input, type, level)
+noise(input, type, final_level)
 }
 \arguments{
 \item{input}{Time series to which noise will be added}
@@ -13,7 +13,7 @@ noise(input, type, level)
 \code{white} - white noise with variance \code{level}
 \code{red} - red noise with variance \code{level} (use with caution)}
 
-\item{level}{Number or \code{var}.
+\item{final_level}{Number or \code{var}.
 A number sets the standard deviation to a constant value at each point.
 \code{var} sets the standard deviation to increase proportional to the (absolute value of the) signal at peaks.}
 }

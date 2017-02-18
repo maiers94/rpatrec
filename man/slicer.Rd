@@ -15,7 +15,7 @@ slicer(data, length, step = 1, useriq = FALSE)
 
 \item{useriq}{User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
 This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-it should return the desired result.}
+It should return the desired result.}
 }
 \description{
 Break time series data into smaller "windows" and pass them to the interpret() function
