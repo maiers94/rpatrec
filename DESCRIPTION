@@ -8,6 +8,7 @@ Maintainer: Stephan Maier <sm297@st-andrews.ac.uk>
 Description: The package generates visual charting patterns and noise,
     provides smoothers to find a signal in noisy time series and enables
     users to apply their findings to real life data.
+Depends: R (>= 2.10)
 License: GPL-3
 Encoding: UTF-8
 LazyData: true
