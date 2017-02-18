@@ -64,7 +64,6 @@ interpret <- function(window,useriq=FALSE){
   #pattern recognition happens here, everything else is preparation
 
   iq <- function(ext,exvals,expos){
-    pattern <- 0
 
     #############
     #- check for Head and shoulder and inverse head and shoulders
@@ -170,10 +169,12 @@ interpret <- function(window,useriq=FALSE){
     }
     ##############
 
-    pattern <- iqhs(ext,exvals)
-    pattern <- iqbtp(ext,exvals)
-    pattern <- iqrtp(ext,exvals)
-    pattern <- iqdtp(ext,exvals,expos)
+    HS <- iqhs(ext,exvals)
+    BTP <- iqbtp(ext,exvals)
+    RTP <- iqrtp(ext,exvals)
+    DTP <- iqdtp(ext,exvals,expos)
+
+    pattern <- list(HS,BTP,RTP,DTP)
 
     return(pattern)
   }
