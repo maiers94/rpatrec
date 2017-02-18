@@ -15,6 +15,7 @@
 #'@return Returns a vector conataining time series data ready forfurther use by removing non-numeric elements, and removing repeated values.
 
 sample.pre <- function(input){
+  inputchecks(list(input),"sample.pre")
   i <- 1
   while(is.numeric(input[i])==FALSE){
     input <- input[(i+1):length(input)]

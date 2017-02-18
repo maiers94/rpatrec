@@ -17,6 +17,9 @@
 
 
 mav <- function(input,len,method){
+
+  inputchecks(list(input,len,method),"mav")
+
   #########
   sim <- function(inp,l){
     output <- vector(length = (length(inp)-l))

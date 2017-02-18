@@ -28,6 +28,8 @@
 generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(0,15,25,50,75,85,100), sprd = c(0,50,25,100,25,50,0)){
   #generate any pattern
 
+  #check errors
+  inputchecks(list(start,dlength,tot.spread,presig,postsig,plength,parts,sprd),"generator")
 
   sectgen <- function(sectlen,init,ref,spread,acc = 0.00001){
     sector <- vector(length = sectlen)
@@ -115,8 +117,10 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
 #'@importFrom stats rnorm
 #'
 
-noise <- function(input,type,level){
-  if(is.numeric(level))final_level <- level
+noise <- function(input,type,final_level){
+
+  inputchecks(list(input,type,final_level),"noise")
+
   if(type=="var"){
     #set scale
     up <- max(abs(input))
