@@ -140,21 +140,29 @@ interpret <- function(window,useriq=FALSE){
     ##############
     #- check for double tops/bottoms
     iqdtp <- function(ext,exvals,expos){
-      #pattern length needs to be 5 (or more if other data follows)
+      #pattern length needs to be 3 (or more if other data follows)
       if(length(ext)<3)return(0)
 
       for(i in 3:length(ext)){
-        rext <- ext[(i-2):length(ext)]
+        rext <- ext[(i-1):length(ext)]
         rexvals <- exvals[(i-1):length(exvals)]
+        rexpos <- expos[(i-1):length(exvals)]
         if(ext[i-2]==1){
-          if(withinavg(c(ext[i-2],max(rexvals[rext==1])),0.05)){
-            #at least 22 trading days apart
-            #if(expos[which.max(rexvals[rext==1])]-expos[i-2]>22)
+          maxpos <- which.max(rexvals)
+          if(rext[maxpos]==1){
+            if(withinavg(c(exvals[i-2],rexvals[maxpos]),0.05)){
+              #at least 22 trading days apart
+              if(rexpos[maxpos]-expos[i-2]>22)return(c("DTOP",exvals[(i-2):i]))
+            }
           }
         }
         if(ext[i-2]==0){
-          if(withinavg(c(ext[i-2],min(rexvals[rext==0])),0.05)){
-            #at least 22 trading days apart
+          minpos <- which.min(rexvals)
+          if(rext[minpos]==0){
+            if(withinavg(c(exvals[i-2],rexvals[minpos]),0.05)){
+              #at least 22 trading days apart
+              if(rexpos[minpos]-expos[i-2]>22)return(c("DBOT",exvals[(i-2):i]))
+            }
           }
         }
       }
@@ -165,6 +173,7 @@ interpret <- function(window,useriq=FALSE){
     pattern <- iqhs(ext,exvals)
     pattern <- iqbtp(ext,exvals)
     pattern <- iqrtp(ext,exvals)
+    pattern <- iqdtp(ext,exvals,expos)
 
     return(pattern)
   }
@@ -220,3 +229,6 @@ interpret <- function(window,useriq=FALSE){
   print(extrema)
   return(result)
 }
+
+
+
