@@ -75,11 +75,11 @@ interpret <- function(window,useriq=FALSE){
         if(withinavg(c(exvals[i-3],exvals[i-1]),p=0.1) == TRUE){
           #if the first extremum is a maximum, it is a Head and shoulders pattern
           if(ext[i-4]==1){
-            if(exvals[i-2]>exvals[i-4]&&exvals[i-2]>exvals[i])return(c("HS",exvals[(i-4):i]))
+            if(exvals[i-2]>exvals[i-4]&&exvals[i-2]>exvals[i])return(list(HS=exvals[(i-4):i]))
           }
           if(ext[i-4]==0){
             #if the first extremum is a minium, it is an inverse Head and shoulders pattern
-            if(exvals[i-2]<exvals[i-4]&&exvals[i-2]<exvals[i])return(c("Inv HS",exvals[(i-4):i]))
+            if(exvals[i-2]<exvals[i-4]&&exvals[i-2]<exvals[i])return(list(InHS=exvals[(i-4):i]))
           }
         }
       }
@@ -97,9 +97,9 @@ interpret <- function(window,useriq=FALSE){
           if(exvals[i-4]<exvals[i-2]){
             if(exvals[i-2]<exvals[i]){
               #if first is max
-              if(ext[i-4]==1)return(c("BTOP",exvals[(i-4):i]))
+              if(ext[i-4]==1)return(list(BTOP=exvals[(i-4):i]))
               #if first is min
-              if(ext[i-4]==0)return(c("TBOT",exvals[(i-4):i]))
+              if(ext[i-4]==0)return(list(TBOT=exvals[(i-4):i]))
             }
           }
         }
@@ -128,8 +128,8 @@ interpret <- function(window,useriq=FALSE){
         if(withinavg(exvals[ext==1],0.01)){
           if(withinavg(exvals[ext==0],0.01)){
             if(min(exvals[ext==1])>max(exvals[ext==0])){
-              if(ext[i-4]==0)return(c("RBOT",exvals[(i-4):i]))
-              if(ext[i-4]==1)return(c("RTOP",exvals[(i-4):i]))
+              if(ext[i-4]==0)return(list(RBOT=exvals[(i-4):i]))
+              if(ext[i-4]==1)return(list(RTOP=exvals[(i-4):i]))
             }
           }
         }
@@ -151,7 +151,7 @@ interpret <- function(window,useriq=FALSE){
           if(rext[maxpos]==1){
             if(withinavg(c(exvals[i-2],rexvals[maxpos]),0.05)){
               #at least 22 trading days apart
-              if(rexpos[maxpos]-expos[i-2]>22)return(c("DTOP",exvals[(i-2):i]))
+              if(rexpos[maxpos]-expos[i-2]>22)return(list(DTOP=exvals[(i-2):i]))
             }
           }
         }
@@ -160,7 +160,7 @@ interpret <- function(window,useriq=FALSE){
           if(rext[minpos]==0){
             if(withinavg(c(exvals[i-2],rexvals[minpos]),0.05)){
               #at least 22 trading days apart
-              if(rexpos[minpos]-expos[i-2]>22)return(c("DBOT",exvals[(i-2):i]))
+              if(rexpos[minpos]-expos[i-2]>22)return(list(DBOT=exvals[(i-2):i]))
             }
           }
         }
@@ -174,7 +174,7 @@ interpret <- function(window,useriq=FALSE){
     RTP <- iqrtp(ext,exvals)
     DTP <- iqdtp(ext,exvals,expos)
 
-    pattern <- list(HS,BTP,RTP,DTP)
+    pattern <- list(HSP=HS,BTP=BTP,RTP=RTP,DTP=DTP)
 
     return(pattern)
   }
