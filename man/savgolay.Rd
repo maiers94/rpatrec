@@ -19,4 +19,3 @@ Vector containing smoothed time series data.
 \description{
 Perform Savitzgy-Golay smoothing on Time Series Data
 }
-

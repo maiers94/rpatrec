@@ -16,7 +16,6 @@ Imports:
     np,
     graphics,
     stats
-RoxygenNote: 5.0.1
+RoxygenNote: 6.0.1.9000
 URL: http://github.com/maiers94/rpatrec
 BugReports: http://github.com/maiers94/rpatrec/issues
-

@@ -18,4 +18,3 @@ Vector containing smoothed time series data, prints the bandwidth used.
 \description{
 Perform Kernel Regression on Time Series Data
 }
-

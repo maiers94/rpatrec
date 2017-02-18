@@ -20,4 +20,3 @@ It should return the desired result.}
 \description{
 Break time series data into smaller "windows" and pass them to the interpret() function
 }
-

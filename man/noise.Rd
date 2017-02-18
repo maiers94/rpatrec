@@ -23,4 +23,3 @@ Time series with added noise.
 \description{
 Add noise to a time series
 }
-

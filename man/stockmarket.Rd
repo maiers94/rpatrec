@@ -12,4 +12,3 @@ stockmarket
 A dataset containing the daily closing prices of the S&P500, DJ Industrials, the Milan Commit Index, etc.
 }
 \keyword{datasets}
-

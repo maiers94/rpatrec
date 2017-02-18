@@ -24,4 +24,3 @@ Compute the moving average, exponential average or running median.
 mav(1:10,5,"exponential")
 
 }
-

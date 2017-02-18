@@ -15,4 +15,3 @@ Returns a vector conataining time series data ready forfurther use by removing n
 \description{
 Prepare Data for using with the other functions
 }
-

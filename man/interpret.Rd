@@ -16,4 +16,3 @@ it should return the desired result.}
 \description{
 Recognise patterns in Time Series Data
 }
-
