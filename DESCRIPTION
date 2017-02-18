@@ -19,3 +19,4 @@ Imports:
 RoxygenNote: 6.0.1.9000
 URL: http://github.com/maiers94/rpatrec
 BugReports: http://github.com/maiers94/rpatrec/issues
+Suggests: testthat
