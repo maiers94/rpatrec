@@ -14,7 +14,6 @@ Encoding: UTF-8
 LazyData: true
 Imports:
     np,
-    openxlsx,
     graphics,
     stats
 RoxygenNote: 5.0.1
