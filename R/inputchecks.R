@@ -79,7 +79,7 @@ singlenumber <- function(x,int=FALSE,pos=FALSE,nneg=FALSE,specific=FALSE){
     if(x<0)stop("invalid arguments - not non-negative")
   }
   if(specific!=FALSE){
-    if(x!=specific)stop("invalid arguments")
+    if(x!=specific)stop("invalid arguments - element needs specific value")
   }
   return(0)
 }
@@ -93,27 +93,27 @@ vectornumber <- function(x,l=FALSE){
 }
 
 correctstring <- function(x,specific=FALSE){
-  if(!is.character(x))stop("invalid arguments")
+  if(!is.character(x))stop("invalid arguments - needs to be a character")
   if(specific[1]!=FALSE){
     if(length(specific)==1){
-      if(x!=specific)stop("invalid arguments")
+      if(x!=specific)stop("invalid arguments - specified option not available")
     }
     else{
       check <- 0
       for(i in 1:length(specific)){
         if(x==specific[i])check <- 1
       }
-      if(check==0)stop("invalid arguments")
+      if(check==0)stop("invalid arguments - specified option not available")
     }
   }
   return(0)
 }
 
 functioncheck <- function(x){
-  if(x!=FALSE){
-    if(!is.function(x))stop("invalid arguments")
+    if(!is.function(x)){
+      if(x!=FALSE)stop("invalid argument - needs to be a function or FALSE")
+    }
     else if(length(formals(x))!=3)stop("invalid arguments - user defined function incorrect")
-  }
 
   return(0)
 }
