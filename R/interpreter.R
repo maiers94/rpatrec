@@ -174,7 +174,7 @@ interpret <- function(window,useriq=FALSE){
     RTP <- iqrtp(ext,exvals)
     DTP <- iqdtp(ext,exvals,expos)
 
-    pattern <- list(HSP=HS,BTP=BTP,RTP=RTP,DTP=DTP)
+    pattern <- list(EXT=ext,EXV=exvals,EXP=expos,HSP=HS,BTP=BTP,RTP=RTP,DTP=DTP)
 
     return(pattern)
   }
