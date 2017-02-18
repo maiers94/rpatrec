@@ -38,6 +38,8 @@ Generate a time series containing a Visual Charting Pattern.
 generator()
 #create a shifted head and shoulders pattern
 generator(sprd = c(0,20,10,90,40,60,0))
+#create a single peak, 10 data points, max is approximately 10
+generator(0,10,10,0,0,1,c(0,50,100),c(0,100,0))
 
 }
 

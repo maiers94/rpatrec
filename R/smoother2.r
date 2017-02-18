@@ -3,7 +3,7 @@
 #'Perform Kernel Regression on Time Series Data
 #'
 #'@param input Vector of Time Series Data
-#'@param bandwith -Numerical: Choice of Bandwith
+#'@param bandwidth -Numerical: Choice of Bandwith
 #'    -\code{auto}: Choose bandwith by Cross validation automatically for the given sample
 #'
 #'@return Vector containing smoothed time series data, prints the bandwidth used.

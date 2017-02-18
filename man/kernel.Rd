@@ -9,7 +9,7 @@ kernel(input, bandwidth = "auto")
 \arguments{
 \item{input}{Vector of Time Series Data}
 
-\item{bandwith}{-Numerical: Choice of Bandwith
+\item{bandwidth}{-Numerical: Choice of Bandwith
 -\code{auto}: Choose bandwith by Cross validation automatically for the given sample}
 }
 \value{

@@ -18,12 +18,42 @@
 #'generator()
 #'#create a shifted head and shoulders pattern
 #'generator(sprd = c(0,20,10,90,40,60,0))
+#'#create a single peak, 10 data points, max is approximately 10
+#'generator(0,10,10,0,0,1,c(0,50,100),c(0,100,0))
 #'
+#'@importFrom stats runif
 #'@export
 #'
 #'
 generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(0,15,25,50,75,85,100), sprd = c(0,50,25,100,25,50,0)){
   #generate any pattern
+
+
+  sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
+    sector <- vector(length = sectlen)
+    expected <- ref
+    #print(ref)
+    #print(init)
+
+    expmin <- expected * (1-acc)
+    expmax <- expected * (1+acc)
+    repeat{
+      cur <- init
+      for(j in 1:sectlen){
+        sector[j] <- cur
+        #going down
+        if(ref<init)cur <- runif(1,sector[j]-spread,sector[j])
+        #going up
+        if(ref>init)cur <- runif(1,sector[j],spread + sector[j])
+      }
+      if(sector[sectlen] > expmin){
+        if(sector[sectlen] < expmax)break
+      }
+    }
+
+
+    return(sector)
+  }
 
 
   start.const <- start
@@ -63,31 +93,9 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
   return(output)
 }
 
-#'@importFrom stats runif
-
-sectgen <- function(sectlen,init,ref,spread,acc = 0.0001){
-  sector <- vector(length = sectlen)
-  expected <- ref
-  print(ref)
-  print(init)
-
-  expmin <- expected * (1-acc)
-  expmax <- expected * (1+acc)
-  repeat{
-    cur <- init
-    for(j in 1:sectlen){
-      sector[j] <- cur
-      if(ref<init)cur <- runif(1,sector[j]-spread,sector[j])
-      if(ref>init)cur <- runif(1,sector[j],spread + sector[j])
-    }
-    if(sector[sectlen] > expmin){
-      if(sector[sectlen] < expmax)break
-    }
-  }
 
 
-  return(sector)
-}
+
 
 #'
 #'Add noise to a time series
