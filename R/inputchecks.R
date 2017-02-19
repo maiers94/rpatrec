@@ -29,7 +29,7 @@ inputchecks <- function(arg,who){
   }
   if(who=="noise"){
     #arg1 needs to be a numeric vector
-    #arg2 needs to be "white", "red", or "var"
+    #arg2 needs to be "white", "red"
     #arg3 needs to be numeric  positive
     vectornumber(arg[[1]])
     correctstring(arg[[2]],c("white","red","var"))
