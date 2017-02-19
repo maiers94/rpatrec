@@ -5,6 +5,8 @@ test_that("output given standard inputs",{
   a <- seq(1:100)
   expect_equal(length(noise(a,"white",2)),length(a))
   expect_error(noise("ASD","white",2))
+  expect_error(noise(a,"green",2))
+  expect_error(noise(a,"white",c(1,2,3)))
 })
 
 test_that("output standard deviation is as required",{
