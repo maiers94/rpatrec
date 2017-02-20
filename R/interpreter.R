@@ -189,7 +189,10 @@ interpret <- function(window,useriq=FALSE){
   }
 
   withinavg <- function(x,p){
+
     c <- sum(x)/length(x)
+    c <- abs(c)
+    x <- abs(x)
     for(i in 1:length(x)){
       if(x[i]<(1-p)*c || x[i]>(1+p)*c)return(FALSE)
     }

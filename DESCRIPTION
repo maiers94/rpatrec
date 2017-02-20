@@ -1,7 +1,7 @@
 Package: rpatrec
 Type: Package
 Title: A Package To Recognise Visual Charting Patterns In Time Series Data
-Version: 0.0.0.9003
+Version: 0.0.0.9004
 Author: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
     c("aut", "cre"))
 Maintainer: Stephan Maier <sm297@st-andrews.ac.uk>
