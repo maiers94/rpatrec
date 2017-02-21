@@ -8,4 +8,8 @@ Check out whether the latest build has passed the checks on Tarvis/AppVeyor:
 
 [![Build status](https://ci.appveyor.com/api/projects/status/5v33xg3htyd43g4c?svg=true)](https://ci.appveyor.com/project/maiers94/rpatrec)
 
+Currently, testing covers this proportion of lines of code
+
 [![codecov](https://codecov.io/gh/maiers94/rpatrec/branch/master/graph/badge.svg)](https://codecov.io/gh/maiers94/rpatrec)
+
+Please refer to the vignette for details and examples on how to use this package.
