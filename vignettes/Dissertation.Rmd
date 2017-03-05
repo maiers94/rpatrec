@@ -123,9 +123,15 @@ Smoothing the data can avoid this.The package provides the user with 5 methods f
 ```{r, fig.show='hold'}
 a <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=1)
 b <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=2)
+c <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=3)
+d <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=4)
 plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 1")
 plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 2")
+plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 3")
+plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 4")
 ```
+
+a higher bandwidth seems to improve the recognition accross all values of noise. However, if the bandwidth is set too high, the following occurs:
 
 ## Vignette Info
 
