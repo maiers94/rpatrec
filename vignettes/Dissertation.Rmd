@@ -121,10 +121,10 @@ interpret(exp2)
 Smoothing the data can avoid this.The package provides the user with 5 methods for smoothing functions. Each will be tested in order to decide up to which level of noise it is capable of removing. To do so, the package provides the user with a testing function. A pattern is defined and generated, noise is added and gradually increased. The whole process is repeated n times, and each individual noise level is repeated k times. 
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=1)
-b <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=2)
-c <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=3)
-d <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=4)
+a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=1)
+b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=2)
+c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=3)
+d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=4)
 plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 1")
 plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 2")
 plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 3")
