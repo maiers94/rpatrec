@@ -4,7 +4,7 @@
 \alias{test.smoother}
 \title{Test how well a smoother can filter noise from data}
 \usage{
-test.smoother(n = 1, m = 5, incr = 1, max = 100, smoother, ...)
+test.smoother(n = 1, m = 5, incr = 1, max = 20, smoother, ...)
 }
 \arguments{
 \item{n}{number of runs}
