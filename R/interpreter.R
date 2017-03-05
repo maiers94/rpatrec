@@ -109,9 +109,9 @@ interpret <- function(window,useriq=FALSE){
           if(exvals[i-4]>exvals[i-2]){
             if(exvals[i-2]>exvals[i]){
               #if first is min
-              if(ext[i-4]==0)return(c("BBOT",exvals[(i-4):i]))
+              if(ext[i-4]==0)return(list(BBOT=exvals[(i-4):i]))
               #if first is max
-              if(ext[i-4]==1)return(c("TTOP",exvals[(i-4):i]))
+              if(ext[i-4]==1)return(list(TTOP=exvals[(i-4):i]))
             }
           }
         }
@@ -174,7 +174,7 @@ interpret <- function(window,useriq=FALSE){
     RTP <- iqrtp(ext,exvals)
     DTP <- iqdtp(ext,exvals,expos)
 
-    pattern <- list(EXT=ext,EXV=exvals,EXP=expos,HSP=HS,BTP=BTP,RTP=RTP,DTP=DTP)
+    pattern <- list(EXT=ext,EXV=exvals,EXP=expos,HSP=HS,BTPorTTP=BTP,RTP=RTP,DTP=DTP)
 
     return(pattern)
   }
@@ -230,7 +230,7 @@ interpret <- function(window,useriq=FALSE){
     result <- useriq(extrema,exvals,expos)
   }
   else result <- iq(extrema,exvals,expos)
-  print(extrema)
+  #print(extrema)
   return(result)
 }
 
