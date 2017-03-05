@@ -2,10 +2,12 @@
 
 export(generator)
 export(interpret)
+export(kernel)
 export(mav)
 export(noise)
 export(savgolay)
 export(slicer)
+export(test.smoother)
 importFrom(graphics,plot)
 importFrom(stats,fitted)
 importFrom(stats,median)

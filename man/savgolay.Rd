@@ -4,10 +4,10 @@
 \alias{savgolay}
 \title{Perform Savitzgy-Golay smoothing on Time Series Data}
 \usage{
-savgolay(data, width = 4, degree = 2)
+savgolay(input, width = 4, degree = 2)
 }
 \arguments{
-\item{data}{Input Vector with Time Series Data}
+\item{input}{Input Vector with Time Series Data}
 
 \item{width}{Width of the filter (to each side of the centre)}
 
