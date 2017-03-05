@@ -22,6 +22,6 @@ kernel <- function(input, bandwidth="auto"){
   else stop("invalid bandwidth input")
 
   output <- fitted(reg)
-  print(reg[[1]])
+  #print(reg[[1]])
   return(output)
 }
