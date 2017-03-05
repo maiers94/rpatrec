@@ -14,11 +14,89 @@ knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 library(rpatrec)
 ```
 
-Vignettes are long form documentation commonly included in packages. Because they are part of the distribution of the package, they need to be as compact as possible. The `html_vignette` output type provides a custom style sheet (and tweaks some options) to ensure that the resulting html is as small as possible. The `html_vignette` format:
+Please note that this vignette is intended to be used alongside the Report submitted for MT4599, at the University of St Andrews, by Stephan Maier.
 
-- Never uses retina figures
-- Has a smaller default figure size
-- Uses a custom CSS stylesheet instead of the default Twitter Bootstrap style
+This Vignette is intended to demonstrate and test the capabilities of the R package RPatRec. In the following examples, all functions of the package will be used to allow comparison amongst their functionalities. Please refer to the following sections:
+
+- Pattern Generation
+- Smoothing
+- Pattern Recognition
+
+## Pattern Generation
+
+We can generate and plot a simple Head and Shoulders Pattern and an Inverse Head and Shoulders pattern, fully compliant with the definition given in the report using the following code:
+
+```{r, fig.show='hold'}
+a <- generator()
+plot(a, type="l", ylab="price", xlab="Trading Days", main="HS")
+b <- generator(plength=5,parts=c(0,15,30,50,70,85,100),sprd=c(0,-40,-20,-100,-20,-40,0))
+plot(b, type="l", ylab="price", xlab="Trading Days", main = "Inverse HS")
+```
+
+Similarly, the other types of patterns are generated (their inverses follow logically and shall not be drawn):
+
+```{r, fig.show='hold'}
+#Double Tops
+c <- generator(plength=3,parts=c(0,25,50,75,100),sprd=c(0,80,40,80,0))
+plot(a, type="l", ylab="price", xlab="Trading Days", main="Double Tops")
+#Rectangle Tops
+d <- generator(plength=5,parts=c(0,20,40,50,60,80,100),sprd=c(0,80,40,80,40,80,0))
+plot(d, type="l", ylab="price", xlab="Trading Days", main = "Rectangle Tops")
+#Triangle Tops
+e <- generator(plength=5,parts=c(0,15,30,50,70,85,100),sprd=c(0,100,10,60,20,30,0))
+plot(e, type="l", ylab="price", xlab="Trading Days", main = "Triangle Tops")
+#Broadening Tops
+f <- generator(plength=5,parts=c(0,15,30,50,70,85,100),sprd=c(0,30,20,60,10,100,0))
+plot(f, type="l", ylab="price", xlab="Trading Days", main = "Broadening Tops")
+```
+
+
+With the right parameters, pattern generation is quite simple. Just to gain an understanding of how the recognition function works, and to test basic recognition of noise-less patterns that are generated with the perfect definition in mind.Hhere the sample output from analysing sample `f`:
+
+```{r, fig.show='hold'}
+interpret(f)
+
+```
+
+The output offers the user a list of the extrema, their values and their position in the time series date. Furthermore, for each recognised pattern, the maxima are output in a list of lists. (The name of the list is only created if a specific pattern (tops, bottoms) has been found and hence it is easy to check whether the elemnt exists in the data, in case the user wishes to further use the result).
+The following test is designed as a benchmark, it should yield 100% recognition rate if the software works well - however it may take a long time to compute:
+
+```{r, fig.show='hold'}
+#Number of runs
+noruns <- 1
+#define the pattern specifications:
+specs <- list(c(0,15,30,50,70,85,100),c(0,15,30,50,70,85,100),c(0,20,40,50,60,80,100),c(0,25,50,75,100),c(0,15,30,50,70,85,100))
+spreads <- list(c(0,40,20,100,20,40,0),c(0,30,20,60,10,100,0),c(0,80,40,80,40,80,0),c(0,80,40,80,0),c(0,100,10,60,20,30,0))
+points <- c(5,5,5,3,5)
+test1 <- vector()
+#run the test for all specifications, 25 times each:
+for(i in 1:5){
+  curspec <- specs[[i]]
+  cursprd <- spreads[[i]]
+  curp <- points [i]
+  success <- 0
+  for(j in 1:noruns){
+    curg <- generator(plength = curp, parts = curspec, sprd = cursprd)
+    cur <- interpret(curg)
+    #check whether the first recognised extreme is in order and whether the number of extremes is in order
+    k <- i
+    if(i==5)k <- 2 
+    if(cur[[k+3]][[1]][1] > cursprd[2]*0.95 && cur[[k+3]][[1]][1] < cursprd[2]*1.05){
+      print("Hello")
+      if(length(cur[[1]])==curp)success <- success + 1
+    }
+  }
+  test1[i] <- success / noruns * 100
+}
+#the following line returns the recognition results in %
+print(test1)
+```
+
+
+
+
+
+
 
 ## Vignette Info
 
