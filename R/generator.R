@@ -46,7 +46,7 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
 
     expmin <- ref * (1-acc)
     expmax <- ref * (1+acc)
-    print(expmin)
+    #print(expmin)
     repeat{
       cur <- init
       for(j in 1:sectlen){
