@@ -28,12 +28,14 @@ test.smoother <- function(n=1,m=5,incr=1,max=20,smoother,...){
         #check whether the pattern has been recognised
         #print(rec)
         status <- FALSE
-        if(rec[1] > 12 && rec[1] < 18){
-          if(rec[2] > 22 && rec[2] < 28){
-            if(rec[3] > 47 && rec[3] < 53){
-              if(rec[4] > 72 && rec[4] < 78){
-                if(rec[5] > 82 && rec[5] < 88){
-                  if(length(rec)==5)status <- TRUE
+        if(length(rec)==5){
+          if(rec[1] > 12 && rec[1] < 18){
+            if(rec[2] > 22 && rec[2] < 28){
+              if(rec[3] > 47 && rec[3] < 53){
+                if(rec[4] > 72 && rec[4] < 78){
+                  if(rec[5] > 82 && rec[5] < 88){
+                    status <- TRUE
+                  }
                 }
               }
             }

@@ -12,6 +12,8 @@ vignette: >
 ```{r, echo = FALSE}
 knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
 library(rpatrec)
+library(np)
+library(stats)
 ```
 
 Please note that this vignette is intended to be used alongside section 2 the Report submitted for MT4599, at the University of St Andrews, by Stephan Maier.
@@ -117,6 +119,13 @@ interpret(exp2)
 ```
 
 Smoothing the data can avoid this.The package provides the user with 5 methods for smoothing functions. Each will be tested in order to decide up to which level of noise it is capable of removing. To do so, the package provides the user with a testing function. A pattern is defined and generated, noise is added and gradually increased. The whole process is repeated n times, and each individual noise level is repeated k times. 
+
+```{r, fig.show='hold'}
+a <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=1)
+b <- test.smoother(n=5,m=10,incr=0.5,max=40,smoother = kernel,bandwidth=2)
+plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 1")
+plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 2")
+```
 
 ## Vignette Info
 
