@@ -8,7 +8,7 @@
 #'
 #'@return Vector containing smoothed time series data, prints the bandwidth used.
 #'
-#'
+#'@export
 #'@importFrom stats fitted
 
 kernel <- function(input, bandwidth="auto"){

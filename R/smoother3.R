@@ -8,7 +8,9 @@
 #'
 #'@export
 
-savgolay <- function(data,width=4,degree=2){
+savgolay <- function(input,width=4,degree=2){
+
+  data <- input
 
   inputchecks(list(data,width,degree),"savgolay")
 
