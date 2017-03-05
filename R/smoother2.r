@@ -10,6 +10,7 @@
 #'
 #'@export
 #'@importFrom stats fitted
+#'@import np
 
 kernel <- function(input, bandwidth="auto"){
   inputchecks(list(input,bandwidth),"kernel")
