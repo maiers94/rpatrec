@@ -24,9 +24,9 @@ This Vignette is intended to demonstrate and test the capabilities of the R pack
 - Real life data
 
 
-## Pattern Generation
+# Pattern Generation
 
-### Data without Noise
+## Data without Noise
 
 We can generate and plot a simple Head and Shoulders Pattern and an Inverse Head and Shoulders pattern, fully compliant with the definition given in the report using the following code:
 
@@ -99,7 +99,7 @@ print(test1)
 
 This yields the 100% recognition rate, as expected.
 
-### Data with Noise
+## Data with Noise
 
 For an initial example, we take a standard HS pattern, and then we add noise:
 
@@ -120,22 +120,45 @@ interpret(exp2)
 
 Smoothing the data can avoid this.The package provides the user with 5 methods for smoothing functions. Each will be tested in order to decide up to which level of noise it is capable of removing. To do so, the package provides the user with a testing function. A pattern is defined and generated, noise is added and gradually increased. The whole process is repeated n times, and each individual noise level is repeated k times. 
 
+### Kernel Regression
+
 ```{r, fig.show='hold'}
 a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=1)
 b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=2)
-c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=3)
-d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=4)
-plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 1")
-plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 2")
-plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 3")
-plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Kernel Smoother with bandwidth 4")
+c <- test.smoother(n=5,m=10,incr=0.5,max=60,smoother = kernel,bandwidth=3)
+d <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=4)
+plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 1")
+plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 2")
+plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 3")
+plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 4")
 ```
 
-a higher bandwidth seems to improve the recognition accross all values of noise. However, if the bandwidth is set too high, the following occurs:
+a higher bandwidth seems to improve the recognition accross all values of noise. However, if the bandwidth is set too high:
 
-## Vignette Info
+```{r, fig.show='hold'}
+a <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=5)
+b <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=6)
+c <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=7)
+d <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=8)
+plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 5")
+plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 6")
+plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 7")
+plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 8")
+```
 
-Note the various macros within the `vignette` section of the metadata block above. These are required in order to instruct R how to build the vignette. Note that you should change the `title` field and the `\VignetteIndexEntry` to match the title of your vignette.
+### Savitzgy-Golay Filter
+
+```{r, fig.show='hold'}
+a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 7)
+b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 8)
+c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 9)
+d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 10)
+plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 7")
+plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 8")
+plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9")
+plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10")
+```
+
 
 ## Styles
 
