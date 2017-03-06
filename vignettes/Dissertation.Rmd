@@ -149,34 +149,39 @@ plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth
 ### Savitzgy-Golay Filter
 
 ```{r, fig.show='hold'}
+e <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 5)
+f <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 6)
 a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 7)
 b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 8)
 c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 9)
 d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 10)
-plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 7")
-plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 8")
-plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9")
-plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10")
+plot(e, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 5, Degree = 2")
+plot(f, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 6, Degree = 2")
+plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 7, Degree = 2")
+plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 8, Degree = 2")
+plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9, Degree = 2")
+plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10, Degree = 2")
 ```
 
+```{r, fig.show='hold'}
+a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 9, degree = 1)
+b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 9, degree = 2)
+c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 9, degree = 3)
+d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 9, degree = 4)
+plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9, Degree = 1")
+plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9, Degree = 2")
+plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9, Degree = 3")
+plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9, Degree = 4")
+```
+### Moving Averages/Medians
 
-## Styles
+```{r, fig.show='hold'}
+a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 10, method = "simple")
 
-The `html_vignette` template includes a basic CSS theme. To override this theme you can specify your own CSS in the document metadata as follows:
-
-    output: 
-      rmarkdown::html_vignette:
-        css: mystyles.css
+```
 
 ## Figures
 
-The figure sizes have been customised so that you can easily put two images side-by-side. 
-
-```{r, fig.show='hold'}
-plot(1:10)
-generator()
-plot(10:1)
-```
 
 You can enable figure captions by `fig_caption: yes` in YAML:
 
