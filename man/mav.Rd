@@ -4,7 +4,7 @@
 \alias{mav}
 \title{Compute the moving average, exponential average or running median.}
 \usage{
-mav(input, len, method)
+mav(input, len = 10, method)
 }
 \arguments{
 \item{input}{Time series data to use for computation}

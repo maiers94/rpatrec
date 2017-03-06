@@ -16,7 +16,7 @@
 #'
 
 
-mav <- function(input,len,method){
+mav <- function(input,len = 10,method){
 
   inputchecks(list(input,len,method),"mav")
 
