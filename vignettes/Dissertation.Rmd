@@ -176,8 +176,14 @@ plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9
 ### Moving Averages/Medians
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 10, method = "simple")
-
+a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 5, method = "simple")
+b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 10, method = "simple")
+c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 15, method = "simple")
+d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 20, method = "simple")
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 5")
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 10")
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 15")
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 20")
 ```
 
 ## Figures
