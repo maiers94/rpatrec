@@ -107,8 +107,10 @@ For an initial example, we take a standard HS pattern, and then we add noise:
 exp1 <- generator()
 #white noise
 exp2 <- noise(exp1,"white",5)
+exp3 <- kernel(exp2,3)
 plot(exp1, type="l", ylab="price", xlab="Trading Days", main="HS")
 plot(exp2, type="l", ylab="price", xlab="Trading Days", main="HS with white noise, sd=5")
+plot(exp3, type="l", ylab="price", xlab="Trading Days", main="HS with white noise, sd=5, smoothed with kernel regression")
 
 ```
 
