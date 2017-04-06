@@ -49,6 +49,6 @@ generator(plength=3,parts=c(25,50,75),sprd=c(80,40,80))
 generator(plength=5,parts=c(20,40,50,60,80),sprd=c(80,40,80,40,80))
 #
 #create a single peak, 10 data points, max is approximately 10
-generator(0,10,10,0,0,1,50,100)
+generator(0,10,10,0,0,0,50,100)
 
 }

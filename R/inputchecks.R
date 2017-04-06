@@ -10,8 +10,8 @@ inputchecks <- function(arg,who){
     #arg 1 needs to be numeric
     #arg 2,3 need to be numeric and greater than 0
     #arg 4,5 need be non-negative integers
-    #arg 6 needs to be a vector
-    #arg 7 needs to be a vector of length of arg 6
+    #arg 7 needs to be a vector
+    #arg 8 needs to be a vector of length of arg 6
     singlenumber(arg[[1]])
     singlenumber(arg[[2]],pos=TRUE)
     singlenumber(arg[[3]],pos=TRUE)
