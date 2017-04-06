@@ -5,8 +5,8 @@
 \title{Generate a time series containing a Visual Charting Pattern.}
 \usage{
 generator(start = 0, dlength = 100, tot.spread = 100, presig = 0,
-  postsig = 0, plength = 5, parts = c(0, 15, 25, 50, 75, 85, 100),
-  sprd = c(0, 50, 25, 100, 25, 50, 0))
+  postsig = 0, plength = 5, parts = c(15, 25, 50, 75, 85), sprd = c(50,
+  25, 100, 25, 50))
 }
 \arguments{
 \item{start}{Starting value}
@@ -19,13 +19,15 @@ generator(start = 0, dlength = 100, tot.spread = 100, presig = 0,
 
 \item{postsig}{Integer. Length of the post-signal part of the time series}
 
-\item{plength}{Integer. Number of extrema in the pattern}
+\item{plength}{No longer needed, kept for compatability}
 
-\item{parts}{Vector of Integers. Vector must contain plength + 2 elements, the first element being 0 and the last 100.
-defines how far the extrema lie apart from another (in percent)}
+\item{parts}{Vector of Integers. Must be the same length as \code{sprd}
+Defines how far the extrema lie apart from another (in percent)
+PREVIOUSLY: Vector must contain plength + 2 elements, the first element being 0 and the last 100.}
 
-\item{sprd}{Vector of Integers.Vector must contain plength + 2 elements, the first and last elemnt should be 0.
-Defines the value of the extrema in percent of \code{tot.spread} in relation to \code{start}}
+\item{sprd}{Vector of Integers. Must be the same length as \code{parts}
+Defines the value of the extrema in percent of \code{tot.spread} in relation to \code{start}.
+PREVIOUSLY: Vector must contain plength + 2 elements, the first and last elemnt should be 0.}
 }
 \value{
 Time series with (optional) pre- or post signal, and the specified pattern.

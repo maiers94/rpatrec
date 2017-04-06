@@ -10,22 +10,16 @@ inputchecks <- function(arg,who){
     #arg 1 needs to be numeric
     #arg 2,3 need to be numeric and greater than 0
     #arg 4,5 need be non-negative integers
-    #arg 6 needs to be integer and grater than 0
-    #arg 7 needs to be a vector of length arg 6 +2, first element 0, last 100
-    #arg 8 needs to be a vector of length arg 6 +2, first element 0, last 0
+    #arg 6 needs to be a vector
+    #arg 7 needs to be a vector of length of arg 6
     singlenumber(arg[[1]])
     singlenumber(arg[[2]],pos=TRUE)
     singlenumber(arg[[3]],pos=TRUE)
     singlenumber(arg[[4]],nneg=TRUE,int=TRUE)
     singlenumber(arg[[5]],nneg=TRUE,int=TRUE)
-    singlenumber(arg[[6]],pos=TRUE,int=TRUE)
-    plus2 <- arg[[6]]+2
-    vectornumber(arg[[7]],plus2)
-    singlenumber(arg[[7]][1],int=TRUE,specific=0)
-    singlenumber(arg[[7]][plus2],int=TRUE,specific=100)
-    vectornumber(arg[[8]],plus2)
-    singlenumber(arg[[7]][1],int=TRUE,specific=0)
-    singlenumber(arg[[7]][plus2],int=TRUE,specific=0)
+    singlenumber(arg[[6]])
+    vectornumber(arg[[7]])
+    vectornumber(arg[[8]],length(arg[[7]]))
   }
   if(who=="noise"){
     #arg1 needs to be a numeric vector

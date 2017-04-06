@@ -5,11 +5,13 @@
 #'@param tot.spread Integer. Difference between the lowest and highest value of the time series
 #'@param presig Integer. Length of the pre-signal part of the time series
 #'@param postsig Integer. Length of the post-signal part of the time series
-#'@param plength Integer. Number of extrema in the pattern
-#'@param parts Vector of Integers. Vector must contain plength + 2 elements, the first element being 0 and the last 100.
-#'    defines how far the extrema lie apart from another (in percent)
-#'@param sprd Vector of Integers.Vector must contain plength + 2 elements, the first and last elemnt should be 0.
-#'    Defines the value of the extrema in percent of \code{tot.spread} in relation to \code{start}
+#'@param plength No longer needed, kept for compatability
+#'@param parts Vector of Integers. Must be the same length as \code{sprd}
+#'    Defines how far the extrema lie apart from another (in percent)
+#'    PREVIOUSLY: Vector must contain plength + 2 elements, the first element being 0 and the last 100.
+#'@param sprd Vector of Integers. Must be the same length as \code{parts}
+#'    Defines the value of the extrema in percent of \code{tot.spread} in relation to \code{start}.
+#'    PREVIOUSLY: Vector must contain plength + 2 elements, the first and last elemnt should be 0.
 #'
 #'@return Time series with (optional) pre- or post signal, and the specified pattern.
 #'
@@ -33,11 +35,18 @@
 #'@export
 #'
 #'
-generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(0,15,25,50,75,85,100), sprd = c(0,50,25,100,25,50,0)){
+generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(15,25,50,75,85), sprd = c(50,25,100,25,50)){
   #generate any pattern
 
   #check errors
   inputchecks(list(start,dlength,tot.spread,presig,postsig,plength,parts,sprd),"generator")
+  if(parts[1]!=0 && sprd[1]!=0){
+    parts <- c(0,parts,100)
+    sprd <- c(0,sprd,0)
+  }
+
+  plength <- length(parts) - 2
+
 
   sectgen <- function(sectlen,init,ref,spread,acc = 0.00001){
     sector <- vector(length = sectlen)
