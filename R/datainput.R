@@ -13,23 +13,26 @@
 #'@param input Vector with timeseries data
 #'
 #'@return Returns a vector conataining time series data ready forfurther use by removing non-numeric elements, and removing repeated values.
+#'@export
 
 sample.pre <- function(input){
   inputchecks(list(input),"sample.pre")
-  i <- 1
-  while(is.numeric(input[i])==FALSE){
-    input <- input[(i+1):length(input)]
-    i <- i+1
-    print(i)
-  }
   output <- input[1]
   cut <- 0
   for(i in 2:length(input)){
-    if(input[i-1]!=input[i]){
-      output <- c(output,input[i])
+    if(!is.na(input[i])){
+      if(input[i-1]!=input[i]){
+        output <- c(output,input[i])
+      }
+      else cut <- cut + 1
     }
-    else cut <- cut +  1
+    else{
+      cut <- cut +  1
+      input[i]<- input[i-1]
+    }
+
   }
   print(c("cut input by",cut))
   return(output)
 }
+

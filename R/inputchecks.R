@@ -30,7 +30,8 @@ inputchecks <- function(arg,who){
     singlenumber(arg[[3]],pos = TRUE)
   }
   if(who=="sample.pre"){
-    vectornumber(arg[[1]])
+    if(!is.vector(arg[[1]]))stop("invalid arguments - argument needs to be a vector")
+    if(is.na(arg[[1]]))stop("invalid arguments - vector must not start with NA")
   }
   if(who=="mav"){
     vectornumber(arg[[1]])
