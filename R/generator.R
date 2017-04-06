@@ -5,7 +5,7 @@
 #'@param tot.spread Integer. Difference between the lowest and highest value of the time series
 #'@param presig Integer. Length of the pre-signal part of the time series
 #'@param postsig Integer. Length of the post-signal part of the time series
-#'@param plength No longer needed, kept for compatability
+#'@param plength No longer needed, kept for compatability. Set to 0.
 #'@param parts Vector of Integers. Must be the same length as \code{sprd}
 #'    Defines how far the extrema lie apart from another (in percent)
 #'    PREVIOUSLY: Vector must contain plength + 2 elements, the first element being 0 and the last 100.
@@ -20,22 +20,22 @@
 #'generator()
 #'#
 #'#create a shifted head and shoulders pattern
-#'generator(sprd = c(0,20,10,90,40,60,0))
+#'generator(sprd = c(20,10,90,40,60))
 #'#
 #'#create a Double Tops pattern
-#'generator(plength=3,parts=c(0,25,50,75,100),sprd=c(0,80,40,80,0))
+#'generator(plength=3,parts=c(25,50,75),sprd=c(80,40,80))
 #'#
 #'#create a Rectangle Tops pattern
-#'generator(plength=5,parts=c(0,20,40,50,60,80,100),sprd=c(0,80,40,80,40,80,0))
+#'generator(plength=5,parts=c(20,40,50,60,80),sprd=c(80,40,80,40,80))
 #'#
 #'#create a single peak, 10 data points, max is approximately 10
-#'generator(0,10,10,0,0,1,c(0,50,100),c(0,100,0))
+#'generator(0,10,10,0,0,1,50,100)
 #'
 #'@importFrom stats runif
 #'@export
 #'
 #'
-generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 5, parts = c(15,25,50,75,85), sprd = c(50,25,100,25,50)){
+generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 0, parts = c(15,25,50,75,85), sprd = c(50,25,100,25,50)){
   #generate any pattern
 
   #check errors

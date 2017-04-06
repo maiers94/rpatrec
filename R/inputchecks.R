@@ -17,7 +17,7 @@ inputchecks <- function(arg,who){
     singlenumber(arg[[3]],pos=TRUE)
     singlenumber(arg[[4]],nneg=TRUE,int=TRUE)
     singlenumber(arg[[5]],nneg=TRUE,int=TRUE)
-    singlenumber(arg[[6]])
+    #singlenumber(arg[[6]])
     vectornumber(arg[[7]])
     vectornumber(arg[[8]],length(arg[[7]]))
   }
