@@ -10,6 +10,8 @@ iq(ext, exvals, expos, hsiq = TRUE, btpiq = TRUE, rtpiq = TRUE,
 \arguments{
 \item{ext}{Extrema}
 
+\item{exvals}{Values of the extrema}
+
 \item{expos}{Position of the extrema}
 
 \item{hsiq}{Logical. Recognise (inverse) Head and Shoulders pattern}
@@ -19,8 +21,6 @@ iq(ext, exvals, expos, hsiq = TRUE, btpiq = TRUE, rtpiq = TRUE,
 \item{rtpiq}{Logical. Recognise Rectangle tops and bottoms pattern}
 
 \item{dtpiq}{Logical. Recognise Double tops and bottoms pattern}
-
-\item{extvals}{Values of the extrema}
 }
 \description{
 Do not call individually. Switch recognition on/off for certain patterns, use the arguments in the \code{interpret} function.

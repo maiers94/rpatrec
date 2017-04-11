@@ -119,7 +119,7 @@ interpret <- function(window,useriq=FALSE,...){
 #'@param dtpiq Logical. Recognise Double tops and bottoms pattern
 #'
 #'@param ext Extrema
-#'@param extvals Values of the extrema
+#'@param exvals Values of the extrema
 #'@param expos Position of the extrema
 #'@export
 #'

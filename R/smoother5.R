@@ -6,6 +6,7 @@
 #' @param ... Optional: Other arguments passed to \code{smooth.spline()}
 #'
 #' @return Smoothed time series data only, no additional output. Use \code{smooth.spline()} for greater functionality
+#' @importFrom stats smooth.spline
 #' @export
 
 splines <- function(input,...){
