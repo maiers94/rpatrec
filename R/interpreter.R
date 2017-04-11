@@ -22,17 +22,21 @@ slicer <- function(data,length,step=1,useriq=FALSE,...){
 
   inputchecks(list(data,length,step,useriq),"slicer")
 
-  no.windows <- ceiling(length(data)/step)
+  no.windows <- ceiling((length(data)-length)/step)+1
   output <- vector(length=no.windows)
   for(i in 1:no.windows){
     lower <- (i-1)*(step)+1
     upper <- lower + length-1
-    if(upper > length(data))upper <- length(data)
+    if(upper > length(data)){
+      upper <- length(data)
+    }
     window <- data[lower:upper]
-    cur <- interpret(window,useriq)
+    cur <- interpret(window,useriq,...)
     if(cur$RESULT==TRUE)output[i] <- 1
     else output[i] <- 0
   }
+  pct <- round(length(output[output==1])/length(output)*100)
+  print(c("Patterns were found in ", pct,"% of windows analysed. Refer to function value for details"))
   return(output)
 }
 
@@ -116,15 +120,13 @@ interpret <- function(window,useriq=FALSE,...){
     }
   }
   if(is.function(useriq)){
-    result <- useriq(extrema,exvals,expos)
+    result <- useriq(extrema,exvals,expos,...)
   }
-  else result <- iq(extrema,exvals,expos)
+  else result <- iq(extrema,exvals,expos,...)
   #print(extrema)
   return(result)
 }
 
-########
-#pattern recognition happens here, everything else is preparation
 
 #'Inbuilt Recoqnition for 10 different financial markets patterns
 #'
@@ -141,7 +143,7 @@ iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
   #- check for Head and shoulder and inverse head and shoulders
   iqhs <- function(ext,exvals){
     #pattern length needs to be 5 (or more if other data follows)
-    if(length(ext)<5)return(0)
+    if(length(ext)<5)return(NA)
     for(i in 5:length(ext)){
       #2nd & 4th extremum must be within 10% average
       if(withinavg(c(exvals[i-3],exvals[i-1]),p=0.1) == TRUE){
@@ -161,7 +163,7 @@ iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
   #- check for Broadening tops and bottoms and triangle tops and bottoms
   iqbtp <- function(ext,exvals){
     #pattern length needs to be 5 (or more if other data follows)
-    if(length(ext)<5)return(0)
+    if(length(ext)<5)return(NA)
     for(i in 5:length(ext)){
       #if 2nd is bigger than 4th
       if(exvals[i-3]>exvals[i-1]){
@@ -194,7 +196,7 @@ iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
   #- check for rectangle tops and bottoms
   iqrtp <- function(ext,exvals){
     #pattern length needs to be 5 (or more if other data follows)
-    if(length(ext)<5)return(0)
+    if(length(ext)<5)return(NA)
     for(i in 5:length(ext)){
       #tops are within 1% of their average
       if(withinavg(exvals[ext==1],0.01)){
@@ -212,7 +214,7 @@ iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
   #- check for double tops/bottoms
   iqdtp <- function(ext,exvals,expos){
     #pattern length needs to be 3 (or more if other data follows)
-    if(length(ext)<3)return(0)
+    if(length(ext)<3)return(NA)
 
     for(i in 3:length(ext)){
       rext <- ext[(i-1):length(ext)]
@@ -252,7 +254,6 @@ iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
 
   if(is.na(HS)&&is.na(BTP)&&is.na(RTP)&&is.na(DTP))res <- FALSE
   else res <- TRUE
-
   pattern <- list(EXT=ext,EXV=exvals,EXP=expos,HSP=HS,BTPorTTP=BTP,RTP=RTP,DTP=DTP,RESULT=res)
 
   return(pattern)
