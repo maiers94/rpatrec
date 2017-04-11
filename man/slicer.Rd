@@ -4,7 +4,7 @@
 \alias{slicer}
 \title{Break time series data into smaller "windows" and pass them to the interpret() function}
 \usage{
-slicer(data, length, step = 1, useriq = FALSE)
+slicer(data, length, step = 1, useriq = FALSE, ...)
 }
 \arguments{
 \item{data}{Time series Data}
@@ -15,8 +15,14 @@ slicer(data, length, step = 1, useriq = FALSE)
 
 \item{useriq}{User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
 This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-It should return the desired result.}
+It should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
+is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.}
+
+\item{...}{Parameters passed on to either the inbuilt or external recognition function.For the internal function check \code{?iq}.}
+}
+\value{
+A vector for every window analysed showing 0 if no pattern and 1 if at least 1 pattern has been found
 }
 \description{
-Break time series data into smaller "windows" and pass them to the interpret() function
+Then use interpret to look at those windows marked with 1 to obtain the full results.
 }
