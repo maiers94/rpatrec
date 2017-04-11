@@ -136,6 +136,8 @@ interpret <- function(window,useriq=FALSE,...){
 #'@param btpiq Logical. Recognise Triangle and/or Broadening tops and bottoms pattern
 #'@param hsiq Logical. Recognise Rectangle tops and bottoms pattern
 #'@param hsiq Logical. Recognise Double tops and bottoms pattern
+#'@export
+#'
 
 iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
 

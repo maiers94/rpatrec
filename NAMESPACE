@@ -2,6 +2,7 @@
 
 export(generator)
 export(interpret)
+export(iq)
 export(kernel)
 export(mav)
 export(noise)
