@@ -31,7 +31,7 @@ inputchecks <- function(arg,who){
   }
   if(who=="sample.pre"){
     if(!is.vector(arg[[1]]))stop("invalid arguments - argument needs to be a vector")
-    if(is.na(arg[[1]]))stop("invalid arguments - vector must not start with NA")
+    if(is.na(arg[[1]][1]))stop("invalid arguments - vector must not start with NA")
   }
   if(who=="mav"){
     vectornumber(arg[[1]])
