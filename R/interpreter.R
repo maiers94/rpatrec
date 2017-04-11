@@ -72,26 +72,7 @@ interpret <- function(window,useriq=FALSE,...){
     return(big)
   }
 
-  #########
-  withinavg.old <- function(a,b,p){
-    a <- abs(a)
-    b <- abs(b)
-    c <- (a+b)/2
-    if(a>(1-p)*c && a<(1+p)*c && b>(1-p)*c && b<(1+p)*c)return(TRUE)
-    else return(FALSE)
-  }
 
-  withinavg <- function(x,p){
-
-    c <- sum(x)/length(x)
-    c <- abs(c)
-    x <- abs(x)
-    for(i in 1:length(x)){
-      if(x[i]<(1-p)*c || x[i]>(1+p)*c)return(FALSE)
-    }
-    return(TRUE)
-  }
-  #########
 
   extrema <- vector()
   exvals <- vector()
@@ -134,12 +115,37 @@ interpret <- function(window,useriq=FALSE,...){
 #'
 #'@param hsiq Logical. Recognise (inverse) Head and Shoulders pattern
 #'@param btpiq Logical. Recognise Triangle and/or Broadening tops and bottoms pattern
-#'@param hsiq Logical. Recognise Rectangle tops and bottoms pattern
-#'@param hsiq Logical. Recognise Double tops and bottoms pattern
+#'@param rtpiq Logical. Recognise Rectangle tops and bottoms pattern
+#'@param dtpiq Logical. Recognise Double tops and bottoms pattern
+#'
+#'@param ext Extrema
+#'@param extvals Values of the extrema
+#'@param expos Position of the extrema
 #'@export
 #'
 
 iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){
+
+  #########
+  withinavg.old <- function(a,b,p){
+    a <- abs(a)
+    b <- abs(b)
+    c <- (a+b)/2
+    if(a>(1-p)*c && a<(1+p)*c && b>(1-p)*c && b<(1+p)*c)return(TRUE)
+    else return(FALSE)
+  }
+
+  withinavg <- function(x,p){
+
+    c <- sum(x)/length(x)
+    c <- abs(c)
+    x <- abs(x)
+    for(i in 1:length(x)){
+      if(x[i]<(1-p)*c || x[i]>(1+p)*c)return(FALSE)
+    }
+    return(TRUE)
+  }
+  #########
 
   #############
   #- check for Head and shoulder and inverse head and shoulders
