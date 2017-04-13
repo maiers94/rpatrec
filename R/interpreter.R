@@ -121,7 +121,6 @@ interpret <- function(window,useriq=FALSE,...){
 #'@param ext Extrema
 #'@param exvals Values of the extrema
 #'@param expos Position of the extrema
-#'@export
 #'
 
 iq <- function(ext,exvals,expos,hsiq=TRUE,btpiq=TRUE,rtpiq=TRUE,dtpiq=TRUE){

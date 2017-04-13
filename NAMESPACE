@@ -2,8 +2,8 @@
 
 export(generator)
 export(interpret)
-export(iq)
 export(kernel)
+export(loess.rpatrec)
 export(mav)
 export(noise)
 export(sample.pre)
