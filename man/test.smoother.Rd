@@ -4,7 +4,8 @@
 \alias{test.smoother}
 \title{Test how well a smoother can filter noise from data}
 \usage{
-test.smoother(n = 1, m = 5, incr = 1, max = 20, smoother, ...)
+test.smoother(n = 1, m = 5, incr = 1, max = 20, smoother,
+  pattern = TRUE, ...)
 }
 \arguments{
 \item{n}{number of runs}
@@ -16,6 +17,8 @@ test.smoother(n = 1, m = 5, incr = 1, max = 20, smoother, ...)
 \item{max}{max number of times the error is increased}
 
 \item{smoother}{Function with pre-defined inputs, so that only the parameter \code{input} is left to be defined}
+
+\item{pattern}{Check whether pattern was recognised. If \code{FALSE} only the correct position of extrema is chacked.}
 
 \item{...}{other parameters the smoother requires}
 }

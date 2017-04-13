@@ -5,10 +5,11 @@
 #'@param incr value by which the error is increased in each turn
 #'@param max max number of times the error is increased
 #'@param smoother Function with pre-defined inputs, so that only the parameter \code{input} is left to be defined
+#'@param pattern Check whether pattern was recognised. If \code{FALSE} only the correct position of extrema is chacked.
 #'@param ... other parameters the smoother requires
 #'
 #'@export
-test.smoother <- function(n=1,m=5,incr=1,max=20,smoother,...){
+test.smoother <- function(n=1,m=5,incr=1,max=20,smoother,pattern=TRUE,...){
   dots <- list(...)
   result <- rep(0,max)
   for(i in 1:n){
@@ -40,7 +41,8 @@ test.smoother <- function(n=1,m=5,incr=1,max=20,smoother,...){
               if(rec[3] > 47 && rec[3] < 53){
                 if(rec[4] > 72 && rec[4] < 78){
                   if(rec[5] > 82 && rec[5] < 88){
-                    status <- TRUE
+                    if(pattern==TRUE)if(!is.na(reci[[4]][[1]][1])) status<-TRUE
+                    else status <- TRUE
                   }
                 }
               }
