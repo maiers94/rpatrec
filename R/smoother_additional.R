@@ -24,6 +24,7 @@ splines <- function(input,spar=NULL,...){
 #' @param ... Optional: Other arguments passed to \code{loess()}
 #'
 #' @return Smoothed time series data only, no additional output. Use \code{smooth.spline()} for greater functionality
+#' @importFrom stats loess
 #' @export
 
 loess.rpatrec <- function(input,span=0.75,...){
