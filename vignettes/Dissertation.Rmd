@@ -124,82 +124,109 @@ Smoothing the data can avoid this.The package provides the user with 5 methods f
 
 ### Kernel Regression
 
+First define the number of test runs.
+This number is set delierately low now, so the package passes online testing. 
+I recommend setting it to r = 5, s = 10
+
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=1)
-b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=2)
-c <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=3)
-d <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=4)
-attach(mtcars)
-par(mfrow=c(2,2))
+#dummy variable for n
+r <- 1
+#dummy variable for m
+s <- 5
+```
+
+
+```{r, fig.show='hold'}
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,bandwidth=1)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,bandwidth=2)
+c <- test.smoother(n=r,m=s,incr=0.5,max=80,smoother = kernel,bandwidth=3)
+d <- test.smoother(n=r,m=s,incr=0.5,max=80,smoother = kernel,bandwidth=4)
+#attach(mtcars)
+#par(mfrow=c(2,2))
 plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 1")
 plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 2")
 plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 3")
 plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 4")
-detach(mtcars)
+#detach(mtcars)
 ```
 
 a higher bandwidth seems to improve the recognition accross all values of noise. However, if the bandwidth is set too high:
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=5)
-b <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=6)
-c <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=7)
-d <- test.smoother(n=5,m=10,incr=0.5,max=80,smoother = kernel,bandwidth=8)
-attach(mtcars)
-par(mfrow=c(2,2))
+a <- test.smoother(n=r,m=s,incr=0.5,max=80,smoother = kernel,bandwidth=5)
+b <- test.smoother(n=r,m=s,incr=0.5,max=80,smoother = kernel,bandwidth=6)
+c <- test.smoother(n=r,m=s,incr=0.5,max=80,smoother = kernel,bandwidth=7)
+d <- test.smoother(n=r,m=s,incr=0.5,max=80,smoother = kernel,bandwidth=8)
+#attach(mtcars)
+#par(mfrow=c(2,2))
 plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 5")
 plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 6")
 plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 7")
 plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Bandwidth = 8")
-detach(mtcars)
+#detach(mtcars)
 ```
 
 ### Savitzgy-Golay Filter
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 7)
-b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 8)
-c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 9)
-d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 10)
-e <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 11)
-f <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay,width = 12)
-attach(mtcars)
-par(mfrow=c(3,2))
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay,width = 7)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay,width = 8)
+c <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay,width = 9)
+d <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay,width = 10)
+e <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay,width = 11)
+f <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay,width = 12)
+#attach(mtcars)
+#par(mfrow=c(3,2))
 plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 7, Degree = 2")
 plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 8, Degree = 2")
 plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 9, Degree = 2")
 plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10, Degree = 2")
 plot(e, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 11, Degree = 2")
 plot(f, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 12, Degree = 2")
-detach(mtcars)
+#detach(mtcars)
 ```
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 1)
-b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 2)
-c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 3)
-d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 4)
-attach(mtcars)
-par(mfrow=c(2,2))
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 1)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 2)
+c <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 3)
+d <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = savgolay, width = 10, degree = 4)
+#attach(mtcars)
+#par(mfrow=c(2,2))
 plot(a, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10, Degree = 1")
 plot(b, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10, Degree = 2")
 plot(c, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10, Degree = 3")
 plot(d, type="l", ylab="% of patterns recognised", xlab="noise", main="Width = 10, Degree = 4")
-detach(mtcars)
+#detach(mtcars)
 ```
 ### Moving Averages/Medians
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 5, method = "simple")
-b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 10, method = "simple")
-c <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 15, method = "simple")
-d <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = mav, len = 20, method = "simple")
-attach(mtcars)
-par(mfrow=c(2,2))
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 5, method = "simple")
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 10, method = "simple")
+c <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 15, method = "simple")
+d <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 20, method = "simple")
+#attach(mtcars)
+#par(mfrow=c(2,2))
 plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 5")
 plot(b,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 10")
 plot(c,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 15")
 plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="SMA, length = 20")
-detach(mtcars)
+#detach(mtcars)
 ```
 
+#### Median
+
+```{r, fig.show='hold'}
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 5, method = "median")
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 10, method = "median")
+c <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 15, method = "median")
+d <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = mav, len = 20, method = "median")
+#attach(mtcars)
+#par(mfrow=c(2,2))
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="Moving Median, length = 5")
+plot(b,type = "l", ylab="% of patterns recognised", xlab="noise", main="Moving Median, length = 10")
+plot(c,type = "l", ylab="% of patterns recognised", xlab="noise", main="Moving Median, length = 15")
+plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="Moving Median, length = 20")
+#detach(mtcars)
+```
