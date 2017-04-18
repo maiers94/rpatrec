@@ -29,6 +29,6 @@ splines <- function(input,spar=NULL,...){
 
 loess.rpatrec <- function(input,span=0.75,...){
   s <- seq(1,length(input))
-  result <- loess(s~input,span=span,...)
+  result <- loess(input~s,span=span,...)
   return(result[[2]])
 }

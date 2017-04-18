@@ -1,10 +1,10 @@
 Package: rpatrec
 Type: Package
 Title: Toolset to Recognise Visual Charting Patterns in Time Series Data
-Version: 0.0.1.9001
-Author: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
+Version: 0.0.1.9002
+Date: 2017-04-23
+Authors@R: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
     c("aut", "cre"))
-Maintainer: Stephan Maier <sm297@st-andrews.ac.uk>
 Description: The package generates visual charting patterns and noise,
     provides smoothers to find a signal in noisy time series and enables
     users to apply their findings to real life data.

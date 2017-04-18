@@ -45,7 +45,7 @@ inputchecks <- function(arg,who){
   if(who=="savgolay"){
     vectornumber(arg[[1]])
     singlenumber(arg[[2]],pos=TRUE,int=TRUE)
-    singlenumber(arg[[3]],pos=TRUE,int=TRUE)
+    singlenumber(arg[[3]],nneg=TRUE,int=TRUE)
   }
   if(who=="slicer"){
     vectornumber(arg[[1]])

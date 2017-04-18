@@ -24,7 +24,7 @@ mav <- function(input,len = 10,method){
   sim <- function(inp,l){
     output <- vector(length = (length(inp)-l))
     for(i in 1:(length(inp)-l)){
-      output[i] <- sum(inp[i:(i+len)])/l
+      output[i] <- sum(inp[i:(i+len)-1])/l
           }
     return(output)
   }
