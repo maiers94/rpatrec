@@ -16,11 +16,11 @@
 #'@return Time series with (optional) pre- or post signal, and the specified pattern.
 #'
 #'@examples
-#'
+#'\dontrun{
 #'#create a standard HS pattern:
 #'generator()
 #'#
-#'\dontrun{
+#'
 #'#create a shifted head and shoulders pattern
 #'generator(sprd = c(20,10,90,40,60))
 #'#
