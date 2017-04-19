@@ -29,9 +29,9 @@ test.smoother <- function(n=1,m=5,incr=1,max=20,smoother,pattern=TRUE,...){
         #### if checks
         #check whether the pattern has been recognised
         #print(rec)
-        #if the function is savgolay, adjust the index (ie. if the predefined argument 2 is 4)
+        #if the function is savgolay, adjust the index (ie. if the predefined argument no 2 is 4)
         if(formals(smoother)[[2]]==4)rec <- rec + dots$width
-        #if the function is a moving averge, adjust the index (ie. if the predefined argument 2 is 4)
+        #if the function is a moving averge, adjust the index (ie. if the predefined argument no 2 is 10)
         if(formals(smoother)[[2]]==10)rec <- rec + dots$len / 2
 
         status <- FALSE

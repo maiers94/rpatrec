@@ -10,7 +10,7 @@
 #' @importFrom stats smooth.spline
 #' @export
 
-splines <- function(input,spar=NULL,...){
+splines <- function(input,spar=0.5,...){
   result <- smooth.spline(x=input,spar=spar,...)
   return(result[[2]])
 }

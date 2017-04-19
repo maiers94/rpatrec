@@ -1,5 +1,5 @@
 ---
-title: "Recognising Visual Patterns in Times Series Data"
+title: "Recognising Visual Patterns in Times Series Data - Part 1"
 author: "Stephan Maier"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
@@ -126,7 +126,7 @@ Smoothing the data can avoid this.The package provides the user with 5 methods f
 
 First define the number of test runs.
 This number is set delierately low now, so the package passes online testing. 
-I recommend setting it to r = 5, s = 10
+I recommend setting it to r = 5, s = 10 when experimenting with the code. For the package to pass online testing, they are set to r = 1, s = 5, to minimise computation time. This, however, negatively affect the quality of the plots.
 
 ```{r, fig.show='hold'}
 #dummy variable for n
@@ -230,3 +230,39 @@ plot(c,type = "l", ylab="% of patterns recognised", xlab="noise", main="Moving M
 plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="Moving Median, length = 20")
 #detach(mtcars)
 ```
+
+#### Splines
+
+```{r, fig.show='hold'}
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = splines, spar=0.1)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = splines, spar=0.3)
+c <- test.smoother(n=r,m=s,incr=0.5,max=60,smoother = splines, spar=0.5)
+d <- test.smoother(n=r,m=s,incr=0.5,max=110,smoother = splines, spar=0.7)
+#attach(mtcars)
+#par(mfrow=c(2,2))
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="Smoothing Splines, spar = 0.1")
+plot(b,type = "l", ylab="% of patterns recognised", xlab="noise", main="Smoothing Splines, spar = 0.3")
+plot(c,type = "l", ylab="% of patterns recognised", xlab="noise", main="Smoothing Splines, spar = 0.5")
+plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="Smoothing Splines, spar = 0.7")
+#detach(mtcars)
+```
+
+#### LOESS
+
+```{r, fig.show='hold'}
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = loess.rpatrec, span=0.1)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = loess.rpatrec, span=0.2)
+c <- test.smoother(n=r,m=s,incr=0.5,max=70,smoother = loess.rpatrec, span=0.3)
+d <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = loess.rpatrec, span=0.4)
+#attach(mtcars)
+#par(mfrow=c(2,2))
+plot(a,type = "l", ylab="% of patterns recognised", xlab="noise", main="LOESS, span = 0.1")
+plot(b,type = "l", ylab="% of patterns recognised", xlab="noise", main="LOESS, span = 0.2")
+plot(c,type = "l", ylab="% of patterns recognised", xlab="noise", main="LOESS, span = 0.3")
+plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="LOESS, span = 0.4")
+#detach(mtcars)
+```
+
+## Real-life data
+
+For reasons of practicality this has been split - please refer to the vignette Dissertation2

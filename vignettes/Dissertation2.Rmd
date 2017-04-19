@@ -1,0 +1,22 @@
+---
+title: "Recognising Visual Patterns in Times Series Data - Part 2"
+author: "Stephan Maier"
+date: "`r Sys.Date()`"
+output: rmarkdown::html_vignette
+vignette: >
+  %\VignetteIndexEntry{Recognising Visual Patterns in Times Series Data}
+  %\VignetteEngine{knitr::rmarkdown}
+  %\VignetteEncoding{UTF-8}
+---
+
+```{r, echo = FALSE}
+knitr::opts_chunk$set(collapse = TRUE, comment = "#>")
+library(rpatrec)
+library(np)
+library(stats)
+```
+
+
+```{r, fig.show='hold'}
+
+```

@@ -4,7 +4,7 @@
 \alias{splines}
 \title{Uses the inbuilt function \code{smooth.spline()} to smooth the data using splines.}
 \usage{
-splines(input, spar = NULL, ...)
+splines(input, spar = 0.5, ...)
 }
 \arguments{
 \item{input}{Time series data passed to \code{smooth.spline()}}
