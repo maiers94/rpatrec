@@ -36,9 +36,11 @@ Time series with (optional) pre- or post signal, and the specified pattern.
 Generate a time series containing a Visual Charting Pattern.
 }
 \examples{
+
 #create a standard HS pattern:
 generator()
 #
+##Not run:
 #create a shifted head and shoulders pattern
 generator(sprd = c(20,10,90,40,60))
 #
@@ -50,5 +52,6 @@ generator(plength=5,parts=c(20,40,50,60,80),sprd=c(80,40,80,40,80))
 #
 #create a single peak, 10 data points, max is approximately 10
 generator(0,10,10,0,0,0,50,100)
+##End(Not run)
 
 }
