@@ -37,7 +37,8 @@ slicer <- function(data,length,step=1,useriq=FALSE,...){
   }
   pct <- round(length(output[output==1])/length(output)*100)
   print(c("Patterns were found in ", pct,"% of windows analysed. Refer to function value for details"))
-  return(output)
+  posw <- (which(output!=0)-1)*step
+  return(list(output,posw))
 }
 
 #'Recognise patterns in Time Series Data
