@@ -5,8 +5,8 @@ Version: 0.9.1
 Date: 2017-04-23
 Authors@R: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
     c("aut", "cre"))
-Description: The package generates visual charting patterns and noise,
-    provides smoothers to find a signal in noisy time series and enables
+Description: Generating visual charting patterns and noise,
+    smoothing to find a signal in noisy time series and enabling
     users to apply their findings to real life data.
 Depends: R (>= 2.10)
 License: GPL-3

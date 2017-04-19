@@ -20,7 +20,7 @@
 #'#create a standard HS pattern:
 #'generator()
 #'#
-#'##Not run:
+#'\notrun{
 #'#create a shifted head and shoulders pattern
 #'generator(sprd = c(20,10,90,40,60))
 #'#
@@ -32,7 +32,7 @@
 #'#
 #'#create a single peak, 10 data points, max is approximately 10
 #'generator(0,10,10,0,0,0,50,100)
-#'##End(Not run)
+#'}
 #'
 #'@importFrom stats runif
 #'@export

@@ -1,5 +1,5 @@
 ## Test environments
-* local Win
+* local Win, devel and rel
 * ubuntu 12.04 (on travis-ci), devel and release
 
 
@@ -7,6 +7,9 @@
 There were no ERRORs or WARNINGs. 
 
 
-
 ## Downstream dependencies
 The package has no known downstream dependencies.
+
+## Vignettes
+
+Vignettes take a long time to run
