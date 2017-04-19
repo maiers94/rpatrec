@@ -40,7 +40,7 @@ Generate a time series containing a Visual Charting Pattern.
 #create a standard HS pattern:
 generator()
 #
-\\notrun{
+\dontrun{
 #create a shifted head and shoulders pattern
 generator(sprd = c(20,10,90,40,60))
 #
