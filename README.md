@@ -3,7 +3,13 @@
 RPatRec
 =======
 
+Please refer to the vignette for details and examples on how to use this package!
+---------------------------------------------------------------------------------
+
+There are two vignettes in this package that guide you through the process of using this software.
+
 Check out whether the latest build has passed the checks on Tarvis/AppVeyor:
+----------------------------------------------------------------------------
 
 [![Travis-CI Build Status](https://travis-ci.org/maiers94/rpatrec.svg?branch=master)](https://travis-ci.org/maiers94/rpatrec)
 
@@ -12,8 +18,6 @@ Check out whether the latest build has passed the checks on Tarvis/AppVeyor:
 Currently, testing covers this proportion of lines of code
 
 [![codecov](https://codecov.io/gh/maiers94/rpatrec/branch/master/graph/badge.svg)](https://codecov.io/gh/maiers94/rpatrec)
-
-Please refer to the vignette for details and examples on how to use this package.
 
 How to build your own recognition function
 ------------------------------------------
