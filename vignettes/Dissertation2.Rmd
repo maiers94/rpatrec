@@ -24,7 +24,7 @@ The package comes equipped with a large amount of stock market data for testing 
 This vignette is not thought to be stand alone documentation but should be read with the report published at the same time. 
 
 
-Firt, plot the DJI (with patterns marked between colourful lines) and plot the sections that the human observer recognises as patterns. This is our benchmark for this exploration.
+First, plot the DJI (with patterns marked between colourful lines) and plot the sections that the human observer recognises as patterns. This is our benchmark for this exploration.
 
 ```{r, fig.show='hold'}
 dji <- sample.pre(data[[3]])
@@ -46,7 +46,7 @@ plot(dji[2300:2800],type="l",main= "Dow Jones Industrials",xlab="Trading Days",y
 
 ```
 Now see whether the algorithms can do the same:
-Firstm the data is smoothed:
+First, the data is smoothed:
 We are looking for long-term pattern, so we set the smoother to a high value:
 Plot again with patterns still highlighted from before
 ```{r, fig.show='hold'}

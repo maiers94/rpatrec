@@ -25,7 +25,6 @@ automatically.
 For an overview of the package capabilities, click here \link{rpatrec}.
 }
 \examples{
-kernel(c(1,15,23,2,-22,2,3,1,32))
 \dontrun{
 #create a standard HS pattern:
 a <- generator()

@@ -2,20 +2,35 @@
 % Please edit documentation in R/smoother_additional.R
 \name{loess.rpatrec}
 \alias{loess.rpatrec}
-\title{Uses the inbuilt function \code{loess()} to smooth the data using local polynomial regression.}
+\title{Uses the inbuilt function \link{loess()} to smooth the data using local polynomial regression.}
 \usage{
 loess.rpatrec(input, span = 0.75, ...)
 }
 \arguments{
-\item{input}{Time series data passed to \code{loess()}}
+\item{input}{Time series data passed to be smoothed}
 
 \item{span}{The main smoothing parameter.}
 
-\item{...}{Optional: Other arguments passed to \code{loess()}}
+\item{...}{Optional: Other arguments passed to \link{loess()}}
 }
 \value{
-Smoothed time series data only, no additional output. Use \code{smooth.spline()} for greater functionality
+Smoothed time series data only, no additional output.
 }
 \description{
+Use local regression to fit a global non-parametric model to the data. If the span is
+smaller than 1 the regression is truly local, if it is larger than 1 all data points in the sample are taken into account
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
 This function is purely included to provide the standard interface coherent with other smoothers to the user.
+}
+\examples{
+\dontrun{
+#create a standard HS pattern:
+a <- generator()
+#add noise to this patterns
+b <- noise(a,"white",10)
+#smooth to regain the signal
+c <- loess.rpatrec(b)
+}
 }

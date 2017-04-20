@@ -19,7 +19,6 @@
 #'@import np
 #'
 #'@examples
-#'kernel(c(1,15,23,2,-22,2,3,1,32))
 #'\dontrun{
 #'#create a standard HS pattern:
 #'a <- generator()
