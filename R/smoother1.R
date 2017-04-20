@@ -1,5 +1,10 @@
-#
 #'Compute the moving average, exponential average or running median.
+#'
+#'Use this function to compute any of these three moving average methods. These are the
+#'simplest smoothers available in the package so it can be a good idea to start initial testing
+#'with this function.
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}.
 #'
 #'@param input Time series data to use for computation
 #'@param len An integer to determine the number of datapoints used for computation
@@ -8,7 +13,17 @@
 #'
 #'@return Vector containing computed values of length of \code{input} less length of \code{len}
 #'
+#'
 #'@examples
+#'\dontrun{
+#'#create a standard HS pattern:
+#'a <- generator()
+#'#add noise to this patterns
+#'b <- noise(a,"white",10)
+#'#smooth to regain the signal
+#'c <- kernel(b,2)
+#'}
+#'##simply test the smoother
 #'mav(1:10,5,"exponential")
 #'
 #'@export

@@ -1,16 +1,35 @@
-#library(np)
-
 #'Perform Kernel Regression on Time Series Data
 #'
+#'Perform kernel regression in line with Lo et al. (2000). Either specify a bandwidth or let it be determined
+#' automatically.
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}.
+#'
 #'@param input Vector of Time Series Data
-#'@param bandwidth -Numerical: Choice of Bandwith
-#'    -\code{auto}: Choose bandwith by Cross validation automatically for the given sample
+#'@param bandwidth \describe{
+#'\item{"Numerical"}{ Choice of Bandwith}
+#'\item{\code{auto}}{ Choose bandwith by Cross validation automatically for the given sample}
+#'}
+#'
 #'
 #'@return Vector containing smoothed time series data, prints the bandwidth used.
 #'
 #'@export
 #'@importFrom stats fitted
 #'@import np
+#'
+#'@examples
+#'kernel(c(1,15,23,2,-22,2,3,1,32))
+#'\dontrun{
+#'#create a standard HS pattern:
+#'a <- generator()
+#'#add noise to this patterns
+#'b <- noise(a,"white",10)
+#'#smooth to regain the signal
+#'c <- kernel(b,2)
+#'}
+#'
+#'
 
 kernel <- function(input, bandwidth="auto"){
   inputchecks(list(input,bandwidth),"kernel")

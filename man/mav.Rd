@@ -18,9 +18,23 @@ Permissible values are \code{exponential}, \code{simple} and \code{median}}
 Vector containing computed values of length of \code{input} less length of \code{len}
 }
 \description{
-Compute the moving average, exponential average or running median.
+Use this function to compute any of these three moving average methods. These are the
+simplest smoothers available in the package so it can be a good idea to start initial testing
+with this function.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
 }
 \examples{
+\dontrun{
+#create a standard HS pattern:
+a <- generator()
+#add noise to this patterns
+b <- noise(a,"white",10)
+#smooth to regain the signal
+c <- kernel(b,2)
+}
+##simply test the smoother
 mav(1:10,5,"exponential")
 
 }

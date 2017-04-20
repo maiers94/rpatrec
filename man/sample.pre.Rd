@@ -14,5 +14,8 @@ Returns a vector conataining time series data ready for further use.
 }
 \description{
 This function removes bank holidays and other days for which \code{NA} or repeated data is available.
-Set to work with Datastream data.
+Designed to work with Datastream data.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
 }

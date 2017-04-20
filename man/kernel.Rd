@@ -9,12 +9,31 @@ kernel(input, bandwidth = "auto")
 \arguments{
 \item{input}{Vector of Time Series Data}
 
-\item{bandwidth}{-Numerical: Choice of Bandwith
--\code{auto}: Choose bandwith by Cross validation automatically for the given sample}
+\item{bandwidth}{\describe{
+\item{"Numerical"}{ Choice of Bandwith}
+\item{\code{auto}}{ Choose bandwith by Cross validation automatically for the given sample}
+}}
 }
 \value{
 Vector containing smoothed time series data, prints the bandwidth used.
 }
 \description{
-Perform Kernel Regression on Time Series Data
+Perform kernel regression in line with Lo et al. (2000). Either specify a bandwidth or let it be determined
+automatically.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
+}
+\examples{
+kernel(c(1,15,23,2,-22,2,3,1,32))
+\dontrun{
+#create a standard HS pattern:
+a <- generator()
+#add noise to this patterns
+b <- noise(a,"white",10)
+#smooth to regain the signal
+c <- kernel(b,2)
+}
+
+
 }
