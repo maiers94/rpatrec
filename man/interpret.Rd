@@ -16,6 +16,47 @@ is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.}
 
 \item{...}{Parameters passed on to either the inbuilt or external recognition function. For the internal function check \code{?iq}.}
 }
+\value{
+A list containing the following: \itemize{
+\item{"EXT"}{ All extrema found in the sample, 0 for minima and 1 for maxima}
+\item{"EXP"}{ Value of these extrema (y-coordinate)}
+\item{"EXP"}{ Position of these extrema (x-coordinate)}
+\item{Recognition Output}{ A list containing the extrema that form part of the pattern labelled by either the custom or \link{iq} function.\itemize{
+\item{"HSP"}{ Can be either: \itemize{
+\item{"HS"}{ (Head and Shoulders)}
+\item{"InvHS"}{ (Inverse Head and Shoulders)}
+}}
+\item{"BTPorTTP"}{ Can be either: \itemize{
+\item{"BTOP"}{ (Broadening Top)}
+\item{"BBOT"}{ (Broadening Bottom)}
+\item{"TTOP"}{ (Triangle Top)}
+\item{"TBOT"}{ (Triangle Bottom)}
+}}
+\item{"RTP"}{ Can be either: \itemize{
+\item{"RTOP"}{ (Rectangle Top)}
+\item{"RBOT"}{ (Rectangle Bottom)}
+}}
+\item{"DTP"}{ Can be either: \itemize{
+\item{"DTOP"}{ (Double Top)}
+\item{"DBOT"}{ (Double Bottom)}
+}}
+}}
+\item{"RESULT"}{ \code{TRUE} if any pattern is found, \code{FALSE} otherwise}
+}
+}
 \description{
-Recognise patterns in Time Series Data
+Use this function to either check for the inbuilt financial markets pattern or to use your own
+recognition function as described in the readme.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
+}
+\examples{
+\dontrun{
+#Generate HS patterns
+a <- generator()
+#switch off recognition for all patterns other than HS
+interpret(window = a, useriq=FALSE, hsiq=TRUE, btpiq=FALSE, rtpiq=FALSE, dtpiq=FALSE)
+}
+
 }

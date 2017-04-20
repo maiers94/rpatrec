@@ -33,7 +33,12 @@ PREVIOUSLY: Vector must contain plength + 2 elements, the first and last elemnt 
 Time series with (optional) pre- or post signal, and the specified pattern.
 }
 \description{
-Generate a time series containing a Visual Charting Pattern.
+This function lets you generate any pattern you specify in the parameters. For known definitions, either
+check the examples or the vignettes. This is mainly used to test either your own or this smoothing and recognition
+function.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}
 }
 \examples{
 \dontrun{

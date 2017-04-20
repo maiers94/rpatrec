@@ -10,8 +10,9 @@ sample.pre(input)
 \item{input}{Vector with timeseries data}
 }
 \value{
-Returns a vector conataining time series data ready forfurther use by removing non-numeric elements, and removing repeated values.
+Returns a vector conataining time series data ready for further use.
 }
 \description{
-Prepare Data for using with the other functions
+This function removes bank holidays and other days for which \code{NA} or repeated data is available.
+Set to work with Datastream data.
 }

@@ -24,6 +24,23 @@ test.smoother(n = 1, m = 5, incr = 1, max = 20, smoother,
 
 \item{...}{other parameters the smoother requires}
 }
+\value{
+Vector of recognition rates for specified levels of noise
+}
 \description{
-Test how well a smoother can filter noise from data
+Use this function to find out about the rate of successful recognition of a simple HS pattern for any smoothing function
+of your choice. Speciffy the noise and other testing conditions.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
+Note that this function may be extremely computationally demanding.
+}
+\examples{
+\dontrun{
+#Test the kernel regression smoother
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,bandwidth=1)
+#Plot the result
+plot(a,type="l")
+}
+
 }

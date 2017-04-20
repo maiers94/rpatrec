@@ -1,6 +1,9 @@
-#'Break time series data into smaller "windows" and pass them to the interpret() function
+#'Recognise Multiple Patterns in a sinlge  time series
 #'
-#'Then use interpret to look at those windows marked with 1 to obtain the full results.
+#'Break time series data into smaller "windows" and pass them to the \link{interpret} function.
+#'The results are summarised in the output. For details, run \link{interpret} on specific windows only.
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}
 #'
 #'@param data Time series Data
 #'@param length Length of the "windows"
@@ -9,9 +12,24 @@
 #'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
 #'    It should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
 #'    is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.
-#'@param ... Parameters passed on to either the inbuilt or external recognition function.For the internal function check \code{?iq}.
+#'@param ... Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for recognition parameters.
+
 #'
-#'@return A vector for every window analysed showing 0 if no pattern and 1 if at least 1 pattern has been found
+#'@return A list containing: \itemize{
+#'  \item{A vector for every window analysed showing 0 if no pattern and 1 if at least 1 pattern has been found.}
+#'  \item{A vector with the starting index of those windows where a pattern has been found.}
+#' }
+#'
+#'
+#'@examples
+#'\dontrun{
+#'#Generate 2 HS patterns
+#'a <- c(generator(),generator())
+#'#recognise both HS patterns
+#'#set window size to 100, step size to 100
+#'#switch off recognition for all patterns other than HS
+#'slicer(data = a, length = 100, step = 100, hsiq=TRUE, btpiq=FALSE, rtpiq=FALSE, dtpiq=FALSE)
+#'}
 #'
 #'@export
 #'
@@ -43,6 +61,11 @@ slicer <- function(data,length,step=1,useriq=FALSE,...){
 
 #'Recognise patterns in Time Series Data
 #'
+#'Use this function to either check for the inbuilt financial markets pattern or to use your own
+#'recognition function as described in the readme.
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}.
+#'
 #'@param window Time Series Data
 #'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
 #'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
@@ -50,7 +73,40 @@ slicer <- function(data,length,step=1,useriq=FALSE,...){
 #'    is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.
 #'@param ... Parameters passed on to either the inbuilt or external recognition function. For the internal function check \code{?iq}.
 #'
+#'@return A list containing the following: \itemize{
+#'\item{"EXT"}{ All extrema found in the sample, 0 for minima and 1 for maxima}
+#'\item{"EXP"}{ Value of these extrema (y-coordinate)}
+#'\item{"EXP"}{ Position of these extrema (x-coordinate)}
+#'\item{Recognition Output}{ A list containing the extrema that form part of the pattern labelled by either the custom or \link{iq} function.\itemize{
+#'\item{"HSP"}{ Can be either: \itemize{
+#'\item{"HS"}{ (Head and Shoulders)}
+#'\item{"InvHS"}{ (Inverse Head and Shoulders)}
+#'}}
+#'\item{"BTPorTTP"}{ Can be either: \itemize{
+#'\item{"BTOP"}{ (Broadening Top)}
+#'\item{"BBOT"}{ (Broadening Bottom)}
+#'\item{"TTOP"}{ (Triangle Top)}
+#'\item{"TBOT"}{ (Triangle Bottom)}
+#'}}
+#'\item{"RTP"}{ Can be either: \itemize{
+#'\item{"RTOP"}{ (Rectangle Top)}
+#'\item{"RBOT"}{ (Rectangle Bottom)}
+#'}}
+#'\item{"DTP"}{ Can be either: \itemize{
+#'\item{"DTOP"}{ (Double Top)}
+#'\item{"DBOT"}{ (Double Bottom)}
+#'}}
+#'}}
+#'\item{"RESULT"}{ \code{TRUE} if any pattern is found, \code{FALSE} otherwise}
+#'}
 #'
+#'@examples
+#'\dontrun{
+#'#Generate HS patterns
+#'a <- generator()
+#'#switch off recognition for all patterns other than HS
+#'interpret(window = a, useriq=FALSE, hsiq=TRUE, btpiq=FALSE, rtpiq=FALSE, dtpiq=FALSE)
+#'}
 #'
 #'@export
 #'
@@ -112,7 +168,9 @@ interpret <- function(window,useriq=FALSE,...){
 
 #'Inbuilt Recoqnition for 10 different financial markets patterns
 #'
-#'Do not call individually. Switch recognition on/off for certain patterns, use the arguments in the \code{interpret} function.
+#'Do not call individually. Switch recognition on/off for certain patterns, use the arguments in the \link{interpret} or \link{slicer} function.
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}.
 #'
 #'@param hsiq Logical. Recognise (inverse) Head and Shoulders pattern
 #'@param btpiq Logical. Recognise Triangle and/or Broadening tops and bottoms pattern

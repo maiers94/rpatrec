@@ -1,5 +1,8 @@
 #'Perform Savitzgy-Golay smoothing on Time Series Data
 #'
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}.
+#'
 #'@param input Input Vector with Time Series Data
 #'@param width Width of the filter (to each side of the centre)
 #'@param degree Highest degree polynomial

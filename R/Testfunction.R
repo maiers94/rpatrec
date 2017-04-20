@@ -1,5 +1,11 @@
 #'Test how well a smoother can filter noise from data
 #'
+#'Use this function to find out about the rate of successful recognition of a simple HS pattern for any smoothing function
+#'of your choice. Speciffy the noise and other testing conditions.
+#'
+#'For an overview of the package capabilities, click here \link{rpatrec}.
+#'Note that this function may be extremely computationally demanding.
+#'
 #'@param n number of runs
 #'@param m number of runs per level of noise
 #'@param incr value by which the error is increased in each turn
@@ -8,6 +14,16 @@
 #'@param pattern Check whether pattern was recognised. If \code{FALSE} only the correct position of extrema is chacked.
 #'@param ntype Noise type. See \code{noise} function for details.
 #'@param ... other parameters the smoother requires
+#'
+#'@return Vector of recognition rates for specified levels of noise
+#'
+#'@examples
+#'\dontrun{
+#'#Test the kernel regression smoother
+#'a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,bandwidth=1)
+#'#Plot the result
+#'plot(a,type="l")
+#'}
 #'
 #'@export
 test.smoother <- function(n=1,m=5,incr=1,max=20,smoother,pattern=TRUE,ntype="white",...){

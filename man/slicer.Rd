@@ -2,7 +2,7 @@
 % Please edit documentation in R/interpreter.R
 \name{slicer}
 \alias{slicer}
-\title{Break time series data into smaller "windows" and pass them to the interpret() function}
+\title{Recognise Multiple Patterns in a sinlge  time series}
 \usage{
 slicer(data, length, step = 1, useriq = FALSE, ...)
 }
@@ -18,11 +18,29 @@ This function must take a vector of 0s and 1s as first input and a vector of the
 It should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
 is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.}
 
-\item{...}{Parameters passed on to either the inbuilt or external recognition function.For the internal function check \code{?iq}.}
+\item{...}{Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for recognition parameters.}
 }
 \value{
-A vector for every window analysed showing 0 if no pattern and 1 if at least 1 pattern has been found
+A list containing: \itemize{
+ \item{A vector for every window analysed showing 0 if no pattern and 1 if at least 1 pattern has been found.}
+ \item{A vector with the starting index of those windows where a pattern has been found.}
+}
 }
 \description{
-Then use interpret to look at those windows marked with 1 to obtain the full results.
+Break time series data into smaller "windows" and pass them to the \link{interpret} function.
+The results are summarised in the output. For details, run \link{interpret} on specific windows only.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}
+}
+\examples{
+\dontrun{
+#Generate 2 HS patterns
+a <- c(generator(),generator())
+#recognise both HS patterns
+#set window size to 100, step size to 100
+#switch off recognition for all patterns other than HS
+slicer(data = a, length = 100, step = 100, hsiq=TRUE, btpiq=FALSE, rtpiq=FALSE, dtpiq=FALSE)
+}
+
 }

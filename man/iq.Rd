@@ -23,5 +23,8 @@ iq(ext, exvals, expos, hsiq = TRUE, btpiq = TRUE, rtpiq = TRUE,
 \item{dtpiq}{Logical. Recognise Double tops and bottoms pattern}
 }
 \description{
-Do not call individually. Switch recognition on/off for certain patterns, use the arguments in the \code{interpret} function.
+Do not call individually. Switch recognition on/off for certain patterns, use the arguments in the \link{interpret} or \link{slicer} function.
+}
+\details{
+For an overview of the package capabilities, click here \link{rpatrec}.
 }
