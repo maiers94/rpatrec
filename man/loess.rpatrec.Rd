@@ -2,7 +2,7 @@
 % Please edit documentation in R/smoother_additional.R
 \name{loess.rpatrec}
 \alias{loess.rpatrec}
-\title{Uses the inbuilt function \link{loess()} to smooth the data using local polynomial regression.}
+\title{Use the inbuilt function \link{loess} to smooth time series data.}
 \usage{
 loess.rpatrec(input, span = 0.75, ...)
 }
@@ -11,7 +11,7 @@ loess.rpatrec(input, span = 0.75, ...)
 
 \item{span}{The main smoothing parameter.}
 
-\item{...}{Optional: Other arguments passed to \link{loess()}}
+\item{...}{Optional: Other arguments passed to \link{loess}}
 }
 \value{
 Smoothed time series data only, no additional output.

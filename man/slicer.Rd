@@ -14,11 +14,9 @@ slicer(data, length, step = 1, useriq = FALSE, ...)
 \item{step}{Number of Data Points between windows}
 
 \item{useriq}{User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
-This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-It should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
-is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.}
+Refer to the readme or the report on how to build your own recognition function}
 
-\item{...}{Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for recognition parameters.}
+\item{...}{Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for the parameters.}
 }
 \value{
 A list containing: \itemize{

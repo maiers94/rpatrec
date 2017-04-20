@@ -1,11 +1,11 @@
-#'Prepare Data for using with the other functions
+#'Prepare Data for using with the other functions in the package
 #'
-#'This function removes bank holidays and other days for which \code{NA} or repeated data is available.
+#'This function removes bank holidays and other days for which only \code{NA} or repeated data is available.
 #'Designed to work with Datastream data.
 #'
 #'For an overview of the package capabilities, click here \link{rpatrec}.
 #'
-#'@param input Vector with timeseries data
+#'@param input Vector with time series data
 #'
 #'@return Returns a vector conataining time series data ready for further use.
 #'@export

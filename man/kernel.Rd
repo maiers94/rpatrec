@@ -10,8 +10,8 @@ kernel(input, bandwidth = "auto")
 \item{input}{Vector of Time Series Data}
 
 \item{bandwidth}{\describe{
-\item{"Numerical"}{ Choice of Bandwith}
-\item{\code{auto}}{ Choose bandwith by Cross validation automatically for the given sample}
+\item{numerical}{ Choice of Bandwith}
+\item{\code{"auto"}}{ Choose bandwith automatically by Cross Validation for the given sample}
 }}
 }
 \value{

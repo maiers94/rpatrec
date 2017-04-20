@@ -2,18 +2,18 @@
 % Please edit documentation in R/datainput.R
 \name{sample.pre}
 \alias{sample.pre}
-\title{Prepare Data for using with the other functions}
+\title{Prepare Data for using with the other functions in the package}
 \usage{
 sample.pre(input)
 }
 \arguments{
-\item{input}{Vector with timeseries data}
+\item{input}{Vector with time series data}
 }
 \value{
 Returns a vector conataining time series data ready for further use.
 }
 \description{
-This function removes bank holidays and other days for which \code{NA} or repeated data is available.
+This function removes bank holidays and other days for which only \code{NA} or repeated data is available.
 Designed to work with Datastream data.
 }
 \details{

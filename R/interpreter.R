@@ -9,10 +9,8 @@
 #'@param length Length of the "windows"
 #'@param step Number of Data Points between windows
 #'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
-#'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-#'    It should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
-#'    is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.
-#'@param ... Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for recognition parameters.
+#'    Refer to the readme or the report on how to build your own recognition function
+#'@param ... Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for the parameters.
 
 #'
 #'@return A list containing: \itemize{
@@ -68,10 +66,8 @@ slicer <- function(data,length,step=1,useriq=FALSE,...){
 #'
 #'@param window Time Series Data
 #'@param useriq User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
-#'    This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-#'    it should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
-#'    is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.
-#'@param ... Parameters passed on to either the inbuilt or external recognition function. For the internal function check \code{?iq}.
+#'    Refer to the readme or the report on how to build your own recognition function.
+#'@param ... Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for the parameters of the internal function.
 #'
 #'@return A list containing the following: \itemize{
 #'\item{"EXT"}{ All extrema found in the sample, 0 for minima and 1 for maxima}

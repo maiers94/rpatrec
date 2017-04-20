@@ -9,9 +9,10 @@ noise(input, type, final_level)
 \arguments{
 \item{input}{Time series to which noise will be added}
 
-\item{type}{String. Defines what type of noise to be added. Acceptable values are:
-\code{white} - white noise with variance \code{level}
-\code{red} - red noise with variance \code{level} (use with caution)}
+\item{type}{String. Defines what type of noise to be added. Acceptable values are:\itemize{
+   \item{\code{white} - white noise with variance \code{final_level}}
+   \item{\code{red} - red noise with variance \code{final_level} (use with caution)}
+}}
 
 \item{final_level}{Number or \code{var}.
 A number sets the standard deviation to a constant value at each point.

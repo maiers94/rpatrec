@@ -2,7 +2,7 @@
 % Please edit documentation in R/smoother_additional.R
 \name{splines}
 \alias{splines}
-\title{Uses the inbuilt function \link{smooth.spline()} to smooth the data using splines.}
+\title{Use the inbuilt function \link{smooth.spline} to smooth time series data}
 \usage{
 splines(input, spar = 0.5, ...)
 }
@@ -11,13 +11,13 @@ splines(input, spar = 0.5, ...)
 
 \item{spar}{Smoothing Parameter, value should be between 0 and 1. \code{NULL} for automatic computation}
 
-\item{...}{Optional: Other arguments passed to \link{smooth.spline()}}
+\item{...}{Optional: Other arguments passed to \link{smooth.spline}}
 }
 \value{
 Smoothed time series data only, no additional output.
 }
 \description{
-This function provides soothing capabilities using the cubic B-spline
+This function provides smoothing capabilities using the cubic B-spline
 }
 \details{
 For an overview of the package capabilities, click here \link{rpatrec}.

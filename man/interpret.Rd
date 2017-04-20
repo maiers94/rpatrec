@@ -10,11 +10,9 @@ interpret(window, useriq = FALSE, ...)
 \item{window}{Time Series Data}
 
 \item{useriq}{User-built recognition function. Set to \code{FALSE} if using inbuilt recognition capabilities.
-This function must take a vector of 0s and 1s as first input and a vector of the extremum values as second input.
-it should return the desired result in list form. An element in the list (\code{$RESULT}) should be a logical variable that
-is \code{FALSE} if no pattern has been found and \code{TRUE} otherwise.}
+Refer to the readme or the report on how to build your own recognition function.}
 
-\item{...}{Parameters passed on to either the inbuilt or external recognition function. For the internal function check \code{?iq}.}
+\item{...}{Parameters passed on to either the inbuilt or external recognition function. Check \link{iq} for the parameters of the internal function.}
 }
 \value{
 A list containing the following: \itemize{

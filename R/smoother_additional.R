@@ -1,13 +1,13 @@
-#'Uses the inbuilt function \link{smooth.spline()} to smooth the data using splines.
+#'Use the inbuilt function \link{smooth.spline} to smooth time series data
 #'
-#'This function provides soothing capabilities using the cubic B-spline
+#'This function provides smoothing capabilities using the cubic B-spline
 #'
 #'For an overview of the package capabilities, click here \link{rpatrec}.
 #'This function is purely included to provide the standard interface coherent with other smoothers to the user.
 #'
 #' @param input Time series data passed to be smoothed
 #' @param spar Smoothing Parameter, value should be between 0 and 1. \code{NULL} for automatic computation
-#' @param ... Optional: Other arguments passed to \link{smooth.spline()}
+#' @param ... Optional: Other arguments passed to \link{smooth.spline}
 #'
 #' @return Smoothed time series data only, no additional output.
 #' @importFrom stats smooth.spline
@@ -28,7 +28,7 @@ splines <- function(input,spar=0.5,...){
   return(result[[2]])
 }
 
-#'Uses the inbuilt function \link{loess()} to smooth the data using local polynomial regression.
+#'Use the inbuilt function \link{loess} to smooth time series data.
 #'
 #'Use local regression to fit a global non-parametric model to the data. If the span is
 #'smaller than 1 the regression is truly local, if it is larger than 1 all data points in the sample are taken into account
@@ -38,7 +38,7 @@ splines <- function(input,spar=0.5,...){
 #'
 #' @param input Time series data passed to be smoothed
 #' @param span The main smoothing parameter.
-#' @param ... Optional: Other arguments passed to \link{loess()}
+#' @param ... Optional: Other arguments passed to \link{loess}
 #'
 #' @return Smoothed time series data only, no additional output.
 #' @importFrom stats loess
