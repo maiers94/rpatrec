@@ -1,5 +1,5 @@
 ---
-title: "Recognising Visual Patterns in Times Series Data - Part 2"
+title: "Recognising Visual Charting Patterns in the Dow Jones Industrials Index"
 author: "Stephan Maier"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
