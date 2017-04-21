@@ -20,7 +20,7 @@
 #'@examples
 #'\dontrun{
 #'#Test the kernel regression smoother
-#'a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,bandwidth=1)
+#'a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,bandwidth=1)
 #'#Plot the result
 #'plot(a,type="l")
 #'}
