@@ -15,8 +15,9 @@ The package has no known downstream dependencies.
 
 Vignettes take a long time to run
 
-##Resubmission
+## Resubmission
 
-* I have stopped the examples from running and eliminated 2/3 NOTEs
-* I have changed the description to adhere to CRAN standard 
-* This is my first submisssion so I think one NOTE will stay
+PATCHED:
+
+NOTE found during compilation on CRAN, relating to unused import.
+The unused Import has been removed since.
