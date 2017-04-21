@@ -1,7 +1,7 @@
 Package: rpatrec
 Type: Package
 Title: Recognising Visual Charting Patterns in Time Series Data
-Version: 0.9.2.9010
+Version: 0.9.3
 Date: 2017-04-21
 Authors@R: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
     c("aut", "cre"))
@@ -13,7 +13,6 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    np,
     stats
 RoxygenNote: 6.0.1.9000
 URL: https://cran.r-project.org/package=rpatrec
@@ -21,5 +20,6 @@ BugReports: http://github.com/maiers94/rpatrec/issues
 Suggests: testthat,
     knitr,
     rmarkdown,
-    graphics
+    graphics,
+    np
 VignetteBuilder: knitr
