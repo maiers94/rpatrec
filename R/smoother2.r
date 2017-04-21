@@ -35,9 +35,11 @@ kernel <- function(input, bandwidth="auto"){
     a <- readline("Do you want to install np now? [y/n]")
     if(a=="y"){
       install.packages("np")
+
     }
     else stop("Package np needed for this function to work. Please install it from CRAN.")
   }
+  library(np)
   inputchecks(list(input,bandwidth),"kernel")
 
   x <- seq(1,length(input))
@@ -48,5 +50,6 @@ kernel <- function(input, bandwidth="auto"){
 
   output <- fitted(reg)
   #print(reg[[1]])
+  detach("package:np", unload=TRUE)
   return(output)
 }
