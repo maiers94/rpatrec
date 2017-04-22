@@ -4,7 +4,7 @@ author: "Stephan Maier"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Recognising Visual Patterns in Times Series Data}
+  %\VignetteIndexEntry{Generating and Recognising Visual Charting Patterns}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---

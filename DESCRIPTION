@@ -13,7 +13,8 @@ License: GPL-3
 Encoding: UTF-8
 LazyData: true
 Imports:
-    stats
+    stats,
+    utils
 RoxygenNote: 6.0.1.9000
 URL: https://cran.r-project.org/package=rpatrec
 BugReports: http://github.com/maiers94/rpatrec/issues

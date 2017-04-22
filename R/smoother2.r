@@ -16,6 +16,7 @@
 #'
 #'@export
 #'@importFrom stats fitted
+#'@importFrom utils install.packages
 #'
 #'@examples
 #'\dontrun{
@@ -35,11 +36,15 @@ kernel <- function(input, bandwidth="auto"){
     a <- readline("Do you want to install np now? [y/n]")
     if(a=="y"){
       install.packages("np")
+      requireNamespace("np")
 
     }
     else stop("Package np needed for this function to work. Please install it from CRAN.")
   }
-  library(np)
+  #library(np)
+  requireNamespace("np")
+  if(!exists("npregbw"))attachNamespace("np")
+
   inputchecks(list(input,bandwidth),"kernel")
 
   x <- seq(1,length(input))

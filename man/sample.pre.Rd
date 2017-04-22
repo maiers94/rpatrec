@@ -7,7 +7,7 @@
 sample.pre(input)
 }
 \arguments{
-\item{input}{Vector with time series data}
+\item{input}{Vector with time series data.}
 }
 \value{
 Returns a vector conataining time series data ready for further use.
