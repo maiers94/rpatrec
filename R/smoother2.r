@@ -43,7 +43,7 @@ kernel <- function(input, bandwidth="auto"){
   }
   #library(np)
   requireNamespace("np")
-  if(!exists("npregbw"))attachNamespace("np")
+  if(!exists("npregbw"))suppressMessages(attachNamespace("np"))
 
   inputchecks(list(input,bandwidth),"kernel")
 
