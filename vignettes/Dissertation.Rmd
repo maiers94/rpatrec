@@ -131,9 +131,9 @@ I recommend setting it to r = 5, s = 10 when experimenting with the code. For th
 
 ```{r, fig.show='hold'}
 #dummy variable for n
-r <- 5
+r <- 1
 #dummy variable for m
-s <- 10
+s <- 3
 ```
 
 
