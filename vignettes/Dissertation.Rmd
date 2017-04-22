@@ -266,8 +266,8 @@ plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="LOESS, s
 
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,ntype = "white", bandwidth=3)
-b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,ntype = "red", bandwidth=3)
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,ntype = "white", bandwidth=3)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,ntype = "red", bandwidth=3)
 
 #attach(mtcars)
 #par(mfrow=c(2,2))
