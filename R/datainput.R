@@ -5,7 +5,7 @@
 #'
 #'For an overview of the package capabilities, click here \link{rpatrec}.
 #'
-#'@param input Vector with time series data
+#'@param input Vector with time series data.
 #'
 #'@return Returns a vector conataining time series data ready for further use.
 #'@export
