@@ -4,7 +4,7 @@ author: "Stephan Maier"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Recognising Visual Patterns in Times Series Data}
+  %\VignetteIndexEntry{Generating and Recognising Visual Charting Patterns}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
@@ -132,7 +132,7 @@ I recommend setting it to r = 5, s = 10 when experimenting with the code. For th
 #dummy variable for n
 r <- 1
 #dummy variable for m
-s <- 5
+s <- 3
 ```
 
 
@@ -266,8 +266,8 @@ plot(d,type = "l", ylab="% of patterns recognised", xlab="noise", main="LOESS, s
 
 
 ```{r, fig.show='hold'}
-a <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,ntype = "white", bandwidth=3)
-b <- test.smoother(n=5,m=10,incr=0.5,max=50,smoother = kernel,ntype = "red", bandwidth=3)
+a <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,ntype = "white", bandwidth=3)
+b <- test.smoother(n=r,m=s,incr=0.5,max=50,smoother = kernel,ntype = "red", bandwidth=3)
 
 #attach(mtcars)
 #par(mfrow=c(2,2))

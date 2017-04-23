@@ -4,7 +4,7 @@ author: "Stephan Maier"
 date: "`r Sys.Date()`"
 output: rmarkdown::html_vignette
 vignette: >
-  %\VignetteIndexEntry{Recognising Visual Patterns in Times Series Data}
+  %\VignetteIndexEntry{Recognising Visual Charting Patterns in the Dow Jones Industrials Index}
   %\VignetteEngine{knitr::rmarkdown}
   %\VignetteEncoding{UTF-8}
 ---
