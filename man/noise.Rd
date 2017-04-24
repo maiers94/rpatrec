@@ -33,7 +33,7 @@ For an overview of the package capabilities, click here \link{rpatrec}
 #Generate a HS patterns
 a <- generator()
 #now add white noise with a standdard deviation of 10
-b <- noise(a,"white",10)
+b <- noise(a,'white',10)
 plot(b)
 }
 

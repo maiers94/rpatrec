@@ -17,14 +17,14 @@
 #'#create a standard HS pattern:
 #'a <- generator()
 #'#add noise to this patterns
-#'b <- noise(a,"white",10)
+#'b <- noise(a,'white',10)
 #'#smooth to regain the signal
 #'c <- splines(b)
 #'}
 #'
 
-splines <- function(input,spar=0.5,...){
-  result <- smooth.spline(x=input,spar=spar,...)
+splines <- function(input, spar = 0.5, ...) {
+  result <- smooth.spline(x = input, spar = spar, ...)
   return(result[[2]])
 }
 
@@ -48,13 +48,13 @@ splines <- function(input,spar=0.5,...){
 #'#create a standard HS pattern:
 #'a <- generator()
 #'#add noise to this patterns
-#'b <- noise(a,"white",10)
+#'b <- noise(a,'white',10)
 #'#smooth to regain the signal
 #'c <- loess.rpatrec(b)
 #'}
 
-loess.rpatrec <- function(input,span=0.75,...){
-  s <- seq(1,length(input))
-  result <- loess(input~s,span=span,...)
+loess.rpatrec <- function(input, span = 0.75, ...) {
+  s <- seq(1, length(input))
+  result <- loess(input ~ s, span = span, ...)
   return(result[[2]])
 }

@@ -9,7 +9,7 @@ slicer(data, length, step = 1, useriq = FALSE, ...)
 \arguments{
 \item{data}{Time series Data}
 
-\item{length}{Length of the "windows"}
+\item{length}{Length of the 'windows'}
 
 \item{step}{Number of Data Points between windows}
 
@@ -25,7 +25,7 @@ A list containing: \itemize{
 }
 }
 \description{
-Break time series data into smaller "windows" and pass them to the \link{interpret} function.
+Break time series data into smaller 'windows' and pass them to the \link{interpret} function.
 The results are summarised in the output. For details, run \link{interpret} on specific windows only.
 }
 \details{

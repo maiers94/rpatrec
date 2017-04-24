@@ -8,7 +8,7 @@
 #'@param input Vector of Time Series Data
 #'@param bandwidth \describe{
 #'\item{numerical}{ Choice of Bandwith}
-#'\item{\code{"auto"}}{ Choose bandwith automatically by Cross Validation for the given sample}
+#'\item{\code{'auto'}}{ Choose bandwith automatically by Cross Validation for the given sample}
 #'}
 #'
 #'
@@ -23,23 +23,23 @@
 #'#create a standard HS pattern:
 #'a <- generator()
 #'#add noise to this patterns
-#'b <- noise(a,"white",10)
+#'b <- noise(a,'white',10)
 #'#smooth to regain the signal
 #'c <- kernel(b,2)
 #'}
 #'
 #'
 
-kernel <- function(input, bandwidth="auto"){
-  inputchecks(list(input,bandwidth),"kernel")
+kernel <- function(input, bandwidth = "auto") {
+  inputchecks(list(input, bandwidth), "kernel")
 
-  x <- seq(1,length(input))
+  x <- seq(1, length(input))
 
-  if(is.numeric(bandwidth))reg <- np::npreg(input ~ x, ckertype = "gaussian", bws = bandwidth, regtype="lc")
-  else if(bandwidth=="auto")reg <- np::npreg(input ~ x, ckertype = "gaussian", bwmethod="cv.ls", regtype="lc")
+  if (is.numeric(bandwidth)) reg <- np::npreg(input ~ x, ckertype = "gaussian", bws = bandwidth, regtype = "lc")
+  else if (bandwidth == "auto") reg <- np::npreg(input ~ x, ckertype = "gaussian", bwmethod = "cv.ls", regtype = "lc")
   else stop("invalid bandwidth input")
 
   output <- fitted(reg)
-  #print(reg[[1]])
+  # print(reg[[1]])
   return(output)
 }

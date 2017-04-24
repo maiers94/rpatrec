@@ -44,79 +44,86 @@
 #'@export
 #'
 #'
-generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, plength = 0, parts = c(15,25,50,75,85), sprd = c(50,25,100,25,50)){
-  #generate any pattern
-
-  #check errors
-  inputchecks(list(start,dlength,tot.spread,presig,postsig,plength,parts,sprd),"generator")
-  if(parts[1]!=0 && sprd[1]!=0){
-    parts <- c(0,parts,100)
-    sprd <- c(0,sprd,0)
+generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, 
+  plength = 0, parts = c(15, 25, 50, 75, 85), sprd = c(50, 25, 100, 25, 50)) {
+  # generate any pattern
+  
+  # check errors
+  inputchecks(list(start, dlength, tot.spread, presig, postsig, plength, parts, 
+    sprd), "generator")
+  if (parts[1] != 0 && sprd[1] != 0) {
+    parts <- c(0, parts, 100)
+    sprd <- c(0, sprd, 0)
   }
-
+  
   plength <- length(parts) - 2
-
-
-  sectgen <- function(sectlen,init,ref,spread,acc = 0.00001){
+  
+  
+  sectgen <- function(sectlen, init, ref, spread, acc = 1e-05) {
     sector <- vector(length = sectlen)
-    #print(ref)
-    #print(init)
-
-    expmin <- ref * (1-acc)
-    expmax <- ref * (1+acc)
-    #print(expmin)
-    repeat{
+    # print(ref) print(init)
+    
+    expmin <- ref * (1 - acc)
+    expmax <- ref * (1 + acc)
+    # print(expmin)
+    repeat {
       cur <- init
-      for(j in 1:sectlen){
+      for (j in 1:sectlen) {
         sector[j] <- cur
-        #going down
-        if(ref<init)cur <- runif(1,sector[j]-spread,sector[j])
-        #going up
-        if(ref>init)cur <- runif(1,sector[j],spread + sector[j])
+        # going down
+        if (ref < init) 
+          cur <- runif(1, sector[j] - spread, sector[j])
+        # going up
+        if (ref > init) 
+          cur <- runif(1, sector[j], spread + sector[j])
       }
-      if(sector[sectlen] > expmin){
-        if(sector[sectlen] < expmax)break
+      if (sector[sectlen] > expmin) {
+        if (sector[sectlen] < expmax) 
+          break
       }
     }
-
-
+    
+    
     return(sector)
   }
-
-
+  
+  
   start.const <- start
   neg <- start - tot.spread
   negative <- FALSE
-  if(neg <= 0){
-    start <- start - neg +10
+  if (neg <= 0) {
+    start <- start - neg + 10
     negative <- TRUE
   }
   start.const <- start
-
-  #make data
+  
+  # make data
   output <- vector(length = dlength)
-
-  partitions <- as.integer(round(parts/100*dlength))
-  pre_spreads <- sprd/100         ##same
-  for(i in 1:(plength+1)){
-    reference <- start.const + round(tot.spread*pre_spreads[i+1])
-
-    curspread <- 2*tot.spread*abs(pre_spreads[i+1]-pre_spreads[i])/(partitions[i+1]-partitions[i])
-    #print(curspread)
-    output[(partitions[i]+1):partitions[i+1]] <- sectgen((partitions[i+1]-partitions[i]),start,reference,curspread)
-    start <- output[(partitions[i+1]-1)]
-
+  
+  partitions <- as.integer(round(parts/100 * dlength))
+  pre_spreads <- sprd/100  ##same
+  for (i in 1:(plength + 1)) {
+    reference <- start.const + round(tot.spread * pre_spreads[i + 1])
+    
+    curspread <- 2 * tot.spread * abs(pre_spreads[i + 1] - pre_spreads[i])/(partitions[i + 
+      1] - partitions[i])
+    # print(curspread)
+    output[(partitions[i] + 1):partitions[i + 1]] <- sectgen((partitions[i + 
+      1] - partitions[i]), start, reference, curspread)
+    start <- output[(partitions[i + 1] - 1)]
+    
   }
-  if(negative==TRUE)output <- output + neg -10
-  if(presig != 0){
-    pre <- vector(length=presig)
-    pre <- rep(output[1],presig)
-    output <- c(pre,output)
+  if (negative == TRUE) 
+    output <- output + neg - 10
+  if (presig != 0) {
+    pre <- vector(length = presig)
+    pre <- rep(output[1], presig)
+    output <- c(pre, output)
   }
-  if(postsig != 0){
-    post <- vector(length=postsig)
-    post <- rep(output[length(output)],postsig)
-    output <- c(output,post)
+  if (postsig != 0) {
+    post <- vector(length = postsig)
+    post <- rep(output[length(output)], postsig)
+    output <- c(output, post)
   }
   return(output)
 }
@@ -150,7 +157,7 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
 #'#Generate a HS patterns
 #'a <- generator()
 #'#now add white noise with a standdard deviation of 10
-#'b <- noise(a,"white",10)
+#'b <- noise(a,'white',10)
 #'plot(b)
 #'}
 #'
@@ -158,26 +165,26 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
 #'@importFrom stats rnorm
 #'
 
-noise <- function(input,type,final_level){
-
-  inputchecks(list(input,type,final_level),"noise")
-
-  if(type=="var"){
-    #set scale
+noise <- function(input, type, final_level) {
+  
+  inputchecks(list(input, type, final_level), "noise")
+  
+  if (type == "var") {
+    # set scale
     up <- max(abs(input))
-    output <- vector(length=length(input))
-    #create noise
-    for(i in 1:length(input)){
-      output[i] <- input[i] + rnorm(1,0,(abs(input[i])/up*final_level))
+    output <- vector(length = length(input))
+    # create noise
+    for (i in 1:length(input)) {
+      output[i] <- input[i] + rnorm(1, 0, (abs(input[i])/up * final_level))
     }
   }
-  if(type=="white"){
-    output <- input + rnorm(length(input),0,final_level)
+  if (type == "white") {
+    output <- input + rnorm(length(input), 0, final_level)
   }
-  if(type=="red"){
-    noise <- cumsum(rnorm(length(input),0,final_level))
+  if (type == "red") {
+    noise <- cumsum(rnorm(length(input), 0, final_level))
     output <- input + noise
   }
-
+  
   return(output)
 }

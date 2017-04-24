@@ -16,30 +16,30 @@ Refer to the readme or the report on how to build your own recognition function.
 }
 \value{
 A list containing the following: \itemize{
-\item{"EXT"}{ All extrema found in the sample, 0 for minima and 1 for maxima}
-\item{"EXP"}{ Value of these extrema (y-coordinate)}
-\item{"EXP"}{ Position of these extrema (x-coordinate)}
+\item{'EXT'}{ All extrema found in the sample, 0 for minima and 1 for maxima}
+\item{'EXP'}{ Value of these extrema (y-coordinate)}
+\item{'EXP'}{ Position of these extrema (x-coordinate)}
 \item{Recognition Output}{ A list containing the extrema that form part of the pattern labelled by either the custom or \link{iq} function.\itemize{
-\item{"HSP"}{ Can be either: \itemize{
-\item{"HS"}{ (Head and Shoulders)}
-\item{"InvHS"}{ (Inverse Head and Shoulders)}
+\item{'HSP'}{ Can be either: \itemize{
+\item{'HS'}{ (Head and Shoulders)}
+\item{'InvHS'}{ (Inverse Head and Shoulders)}
 }}
-\item{"BTPorTTP"}{ Can be either: \itemize{
-\item{"BTOP"}{ (Broadening Top)}
-\item{"BBOT"}{ (Broadening Bottom)}
-\item{"TTOP"}{ (Triangle Top)}
-\item{"TBOT"}{ (Triangle Bottom)}
+\item{'BTPorTTP'}{ Can be either: \itemize{
+\item{'BTOP'}{ (Broadening Top)}
+\item{'BBOT'}{ (Broadening Bottom)}
+\item{'TTOP'}{ (Triangle Top)}
+\item{'TBOT'}{ (Triangle Bottom)}
 }}
-\item{"RTP"}{ Can be either: \itemize{
-\item{"RTOP"}{ (Rectangle Top)}
-\item{"RBOT"}{ (Rectangle Bottom)}
+\item{'RTP'}{ Can be either: \itemize{
+\item{'RTOP'}{ (Rectangle Top)}
+\item{'RBOT'}{ (Rectangle Bottom)}
 }}
-\item{"DTP"}{ Can be either: \itemize{
-\item{"DTOP"}{ (Double Top)}
-\item{"DBOT"}{ (Double Bottom)}
+\item{'DTP'}{ Can be either: \itemize{
+\item{'DTOP'}{ (Double Top)}
+\item{'DBOT'}{ (Double Bottom)}
 }}
 }}
-\item{"RESULT"}{ \code{TRUE} if any pattern is found, \code{FALSE} otherwise}
+\item{'RESULT'}{ \code{TRUE} if any pattern is found, \code{FALSE} otherwise}
 }
 }
 \description{

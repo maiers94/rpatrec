@@ -19,53 +19,56 @@
 #'#create a standard HS pattern:
 #'a <- generator()
 #'#add noise to this patterns
-#'b <- noise(a,"white",10)
+#'b <- noise(a,'white',10)
 #'#smooth to regain the signal
 #'c <- kernel(b,2)
 #'}
 #'##simply test the smoother
-#'mav(1:10,5,"exponential")
+#'mav(1:10,5,'exponential')
 #'
 #'@export
 #'@importFrom stats median
 #'
 
 
-mav <- function(input,len = 10,method){
-
-  inputchecks(list(input,len,method),"mav")
-
-  #########
-  sim <- function(inp,l){
-    output <- vector(length = (length(inp)-l))
-    for(i in 1:(length(inp)-l)){
-      output[i] <- sum(inp[i:(i+len)-1])/l
-          }
-    return(output)
-  }
-  ##########
-  med <- function(inp,l){
-    output <- vector(length = (length(inp)-l))
-    for(i in 1:(length(inp)-l)){
-      output[i] <- median(inp[i:(i+len)])
+mav <- function(input, len = 10, method) {
+  
+  inputchecks(list(input, len, method), "mav")
+  
+  ######### 
+  sim <- function(inp, l) {
+    output <- vector(length = (length(inp) - l))
+    for (i in 1:(length(inp) - l)) {
+      output[i] <- sum(inp[i:(i + len) - 1])/l
     }
     return(output)
   }
-  ##########
-  exp <- function(inp,l){
-    output <- vector(length = (length(inp)-l))
+  ########## 
+  med <- function(inp, l) {
+    output <- vector(length = (length(inp) - l))
+    for (i in 1:(length(inp) - l)) {
+      output[i] <- median(inp[i:(i + len)])
+    }
+    return(output)
+  }
+  ########## 
+  exp <- function(inp, l) {
+    output <- vector(length = (length(inp) - l))
     output[1] <- sum(inp[1:l])/l
-    alpha <- 2/(l+1)
-    for(i in 2:(length(inp)-l)){
-      cur <- output[i-1]
-      output[i] <- (inp[i+l]-output[i-1])*alpha + output[i-1]
+    alpha <- 2/(l + 1)
+    for (i in 2:(length(inp) - l)) {
+      cur <- output[i - 1]
+      output[i] <- (inp[i + l] - output[i - 1]) * alpha + output[i - 1]
     }
-
+    
     return(output)
   }
-
-  if(method=="simple")return(sim(input,len))
-  if(method=="median")return(med(input,len))
-  if(method=="exponential")return(exp(input,len))
+  
+  if (method == "simple") 
+    return(sim(input, len))
+  if (method == "median") 
+    return(med(input, len))
+  if (method == "exponential") 
+    return(exp(input, len))
   return(0)
 }

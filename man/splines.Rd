@@ -28,7 +28,7 @@ This function is purely included to provide the standard interface coherent with
 #create a standard HS pattern:
 a <- generator()
 #add noise to this patterns
-b <- noise(a,"white",10)
+b <- noise(a,'white',10)
 #smooth to regain the signal
 c <- splines(b)
 }

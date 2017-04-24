@@ -11,7 +11,7 @@ kernel(input, bandwidth = "auto")
 
 \item{bandwidth}{\describe{
 \item{numerical}{ Choice of Bandwith}
-\item{\code{"auto"}}{ Choose bandwith automatically by Cross Validation for the given sample}
+\item{\code{'auto'}}{ Choose bandwith automatically by Cross Validation for the given sample}
 }}
 }
 \value{
@@ -29,7 +29,7 @@ For an overview of the package capabilities, click here \link{rpatrec}.
 #create a standard HS pattern:
 a <- generator()
 #add noise to this patterns
-b <- noise(a,"white",10)
+b <- noise(a,'white',10)
 #smooth to regain the signal
 c <- kernel(b,2)
 }
