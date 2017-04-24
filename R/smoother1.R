@@ -32,10 +32,10 @@
 
 
 mav <- function(input, len = 10, method) {
-  
+
   inputchecks(list(input, len, method), "mav")
-  
-  ######### 
+
+  #########
   sim <- function(inp, l) {
     output <- vector(length = (length(inp) - l))
     for (i in 1:(length(inp) - l)) {
@@ -43,7 +43,7 @@ mav <- function(input, len = 10, method) {
     }
     return(output)
   }
-  ########## 
+  ##########
   med <- function(inp, l) {
     output <- vector(length = (length(inp) - l))
     for (i in 1:(length(inp) - l)) {
@@ -51,24 +51,23 @@ mav <- function(input, len = 10, method) {
     }
     return(output)
   }
-  ########## 
+  ##########
   exp <- function(inp, l) {
     output <- vector(length = (length(inp) - l))
     output[1] <- sum(inp[1:l])/l
     alpha <- 2/(l + 1)
     for (i in 2:(length(inp) - l)) {
-      cur <- output[i - 1]
       output[i] <- (inp[i + l] - output[i - 1]) * alpha + output[i - 1]
     }
-    
+
     return(output)
   }
-  
-  if (method == "simple") 
+
+  if (method == "simple")
     return(sim(input, len))
-  if (method == "median") 
+  if (method == "median")
     return(med(input, len))
-  if (method == "exponential") 
+  if (method == "exponential")
     return(exp(input, len))
   return(0)
 }

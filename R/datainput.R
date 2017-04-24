@@ -30,4 +30,3 @@ sample.pre <- function(input) {
   print(c("cut input by", cut))
   return(output)
 }
-

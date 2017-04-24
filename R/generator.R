@@ -44,25 +44,25 @@
 #'@export
 #'
 #'
-generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0, 
+generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, postsig = 0,
   plength = 0, parts = c(15, 25, 50, 75, 85), sprd = c(50, 25, 100, 25, 50)) {
   # generate any pattern
-  
+
   # check errors
-  inputchecks(list(start, dlength, tot.spread, presig, postsig, plength, parts, 
+  inputchecks(list(start, dlength, tot.spread, presig, postsig, plength, parts,
     sprd), "generator")
   if (parts[1] != 0 && sprd[1] != 0) {
     parts <- c(0, parts, 100)
     sprd <- c(0, sprd, 0)
   }
-  
+
   plength <- length(parts) - 2
-  
-  
+
+
   sectgen <- function(sectlen, init, ref, spread, acc = 1e-05) {
     sector <- vector(length = sectlen)
     # print(ref) print(init)
-    
+
     expmin <- ref * (1 - acc)
     expmax <- ref * (1 + acc)
     # print(expmin)
@@ -71,23 +71,23 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
       for (j in 1:sectlen) {
         sector[j] <- cur
         # going down
-        if (ref < init) 
+        if (ref < init)
           cur <- runif(1, sector[j] - spread, sector[j])
         # going up
-        if (ref > init) 
+        if (ref > init)
           cur <- runif(1, sector[j], spread + sector[j])
       }
       if (sector[sectlen] > expmin) {
-        if (sector[sectlen] < expmax) 
+        if (sector[sectlen] < expmax)
           break
       }
     }
-    
-    
+
+
     return(sector)
   }
-  
-  
+
+
   start.const <- start
   neg <- start - tot.spread
   negative <- FALSE
@@ -96,24 +96,24 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
     negative <- TRUE
   }
   start.const <- start
-  
+
   # make data
   output <- vector(length = dlength)
-  
+
   partitions <- as.integer(round(parts/100 * dlength))
   pre_spreads <- sprd/100  ##same
   for (i in 1:(plength + 1)) {
     reference <- start.const + round(tot.spread * pre_spreads[i + 1])
-    
-    curspread <- 2 * tot.spread * abs(pre_spreads[i + 1] - pre_spreads[i])/(partitions[i + 
+
+    curspread <- 2 * tot.spread * abs(pre_spreads[i + 1] - pre_spreads[i])/(partitions[i +
       1] - partitions[i])
     # print(curspread)
-    output[(partitions[i] + 1):partitions[i + 1]] <- sectgen((partitions[i + 
+    output[(partitions[i] + 1):partitions[i + 1]] <- sectgen((partitions[i +
       1] - partitions[i]), start, reference, curspread)
     start <- output[(partitions[i + 1] - 1)]
-    
+
   }
-  if (negative == TRUE) 
+  if (negative == TRUE)
     output <- output + neg - 10
   if (presig != 0) {
     pre <- vector(length = presig)
@@ -166,9 +166,9 @@ generator <- function(start = 0, dlength = 100, tot.spread = 100, presig = 0, po
 #'
 
 noise <- function(input, type, final_level) {
-  
+
   inputchecks(list(input, type, final_level), "noise")
-  
+
   if (type == "var") {
     # set scale
     up <- max(abs(input))
@@ -185,6 +185,6 @@ noise <- function(input, type, final_level) {
     noise <- cumsum(rnorm(length(input), 0, final_level))
     output <- input + noise
   }
-  
+
   return(output)
 }
