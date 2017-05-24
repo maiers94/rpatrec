@@ -1,15 +1,15 @@
 Package: rpatrec
 Type: Package
 Title: Recognising Visual Charting Patterns in Time Series Data
-Version: 1.0.1
+Version: 1.0.2.90
 Date: 2017-05-23
 Authors@R: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
     c("aut", "cre"))
 Description: Generating visual charting patterns and noise,
     smoothing to find a signal in noisy time series and enabling
     users to apply their findings to real life data.
-Depends: R (>= 2.10)
-License: GPL-3
+Depends: R (>= 3.0.1)
+License: GPL-3 + file LICENSE
 Encoding: UTF-8
 LazyData: true
 Imports:
