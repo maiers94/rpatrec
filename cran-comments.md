@@ -15,9 +15,4 @@ The package has no known downstream dependencies.
 
 Vignettes take a long time to run
 
-## Resubmission
 
-PATCHED:
-
-NOTE found during compilation on CRAN, relating to unused import.
-The unused Import has been removed since.
