@@ -8,6 +8,8 @@ Authors@R: person("Stephan", "Maier", email = "sm297@st-andrews.ac.uk", role =
 Description: Generating visual charting patterns and noise,
     smoothing to find a signal in noisy time series and enabling
     users to apply their findings to real life data.
+Classification/ACM: I.5.4
+Classification/JEL: G17
 Depends: R (>= 3.0.1)
 License: GPL-3 + file LICENSE
 Encoding: UTF-8
